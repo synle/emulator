@@ -11,17 +11,19 @@
 - **BIOS** — not required. Dolphin includes a HLE (high-level emulation) boot.
 - **IPL** (Initial Program Loader) — the optional GameCube boot animation. Dumped from a real GameCube; purely cosmetic.
 
-| File | For | Required? |
-|---|---|---|
-| `IPL.bin` (per-region) | GameCube boot animation | Optional |
+| File                   | For                     | Required? |
+| ---------------------- | ----------------------- | --------- |
+| `IPL.bin` (per-region) | GameCube boot animation | Optional  |
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Minimum: Intel i5 4th gen / Ryzen 3 1200, GTX 750 Ti / Vega 8 integrated, 8 GB RAM.
 - Recommended: i5 / Ryzen 5 + GTX 1060 / RX 580 for 3× upscale (1440p) stable 60fps.
 
 **Android**
+
 - Minimum: Snapdragon 845 / Dimensity 1200, 6 GB RAM.
 - ✅ **S24 Ultra** (SD 8 Gen 3, Adreno 750) — full-speed 2× upscale, 60fps, no issues.
 - ✅ **Z Fold 5** (SD 8 Gen 2) — full-speed, 2× upscale fine.
@@ -29,10 +31,12 @@
 - Use **Dolphin MMJR2** for best performance.
 
 **iOS / iPadOS**
+
 - Minimum: A13 Bionic.
 - ✅ **iPad Pro 12.9" M1** — official Dolphin iOS runs 2–3× upscale at 60fps on nearly all titles.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** — 1.5–2× upscale at 60fps for the vast majority of the library. A few heavy-hitters (F-Zero GX, Rogue Squadron III) need native res.
 - ✅ **Legion Go** — 3–4× upscale comfortably.
 

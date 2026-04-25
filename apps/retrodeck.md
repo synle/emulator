@@ -7,14 +7,14 @@ RetroDeck is a **single Flatpak** that bundles RetroArch, standalone emulators, 
 
 ## Supported platforms
 
-| Platform | Supported | Notes |
-|---|---|---|
-| Steam Deck (SteamOS) | ✅ primary target | Flatpak via Discover |
-| Linux (any Flatpak-capable distro) | ✅ | Ubuntu, Fedora, Arch, etc. |
-| Windows | ❌ | Flatpak-only — use [EmuDeck](emudeck.md) instead |
-| macOS | ❌ | Not supported |
-| Android | ❌ | Not supported |
-| iOS | ❌ | Not supported |
+| Platform                           | Supported         | Notes                                            |
+| ---------------------------------- | ----------------- | ------------------------------------------------ |
+| Steam Deck (SteamOS)               | ✅ primary target | Flatpak via Discover                             |
+| Linux (any Flatpak-capable distro) | ✅                | Ubuntu, Fedora, Arch, etc.                       |
+| Windows                            | ❌                | Flatpak-only — use [EmuDeck](emudeck.md) instead |
+| macOS                              | ❌                | Not supported                                    |
+| Android                            | ❌                | Not supported                                    |
+| iOS                                | ❌                | Not supported                                    |
 
 If you are on Windows or macOS, skip this doc and use [EmuDeck](emudeck.md) or individual emulators.
 
@@ -101,14 +101,66 @@ RetroDeck supports Syncthing and rclone via Configurator → **Tools → Cloud S
 
 ## RetroDeck vs EmuDeck — which to use?
 
-| | RetroDeck | EmuDeck |
-|---|---|---|
-| Install | One Flatpak | Many separate installs |
-| Update | One command | Per-emulator |
-| Flexibility | Low (sandboxed) | High (edit each emu's config directly) |
-| Windows/macOS | No | Yes |
-| Desktop frontend | ES-DE built in | ES-DE or Pegasus optional |
-| Good for | "Set and forget" on Steam Deck / Linux | Power users, multi-platform households |
+|                  | RetroDeck                              | EmuDeck                                |
+| ---------------- | -------------------------------------- | -------------------------------------- |
+| Install          | One Flatpak                            | Many separate installs                 |
+| Update           | One command                            | Per-emulator                           |
+| Flexibility      | Low (sandboxed)                        | High (edit each emu's config directly) |
+| Windows/macOS    | No                                     | Yes                                    |
+| Desktop frontend | ES-DE built in                         | ES-DE or Pegasus optional              |
+| Good for         | "Set and forget" on Steam Deck / Linux | Power users, multi-platform households |
+
+## Per-system setup
+
+RetroDeck uses a unified layout under `~/retrodeck/` (or your chosen SD card path). Drop ROMs in the correct subfolder and BIOS into `~/retrodeck/bios/`. After adding BIOS, run **Configurator → Tools → BIOS Checker** to verify hashes.
+
+Because RetroDeck is a Flatpak sandbox, per-emulator configuration lives at `~/.var/app/net.retrodeck.retrodeck/config/` — you usually don't need to touch it directly; use the Configurator instead.
+
+| System                                        | ROM folder (`~/retrodeck/roms/…`) | BIOS in `~/retrodeck/bios/`                             | Bundled emulator                     |
+| --------------------------------------------- | --------------------------------- | ------------------------------------------------------- | ------------------------------------ |
+| [NES](../systems/nes.md)                      | `nes/`                            | FDS: `disksys.rom`                                      | RetroArch + Mesen / FCEUmm           |
+| [SNES](../systems/snes.md)                    | `snes/`                           | —                                                       | RetroArch + Snes9x                   |
+| [N64](../systems/n64.md)                      | `n64/`                            | —                                                       | RetroArch + Mupen64Plus-Next         |
+| [GameCube](../systems/gamecube.md)            | `gc/`                             | —                                                       | Dolphin                              |
+| [Wii](../systems/wii.md)                      | `wii/`                            | —                                                       | Dolphin                              |
+| [Wii U](../systems/wiiu.md)                   | `wiiu/`                           | Cemu keys (via Cemu GUI)                                | Cemu                                 |
+| [Switch](../systems/switch.md)                | `switch/`                         | `switch/keys/prod.keys`, `title.keys`; firmware via GUI | (current fork — check release notes) |
+| [GB / GBC](../systems/gb.md)                  | `gb/`, `gbc/`                     | —                                                       | RetroArch + SameBoy                  |
+| [GBA](../systems/gba.md)                      | `gba/`                            | `gba_bios.bin`                                          | RetroArch + mGBA                     |
+| [NDS](../systems/nds.md)                      | `nds/`                            | `bios7.bin`, `bios9.bin`, `firmware.bin`                | RetroArch + melonDS                  |
+| [3DS](../systems/3ds.md)                      | `n3ds/`                           | `aes_keys.txt`                                          | Azahar / Lime3DS                     |
+| [PS1](../systems/ps1.md)                      | `psx/`                            | `scph5500.bin`, `scph5501.bin`, `scph5502.bin`          | DuckStation                          |
+| [PS2](../systems/ps2.md)                      | `ps2/`                            | PS2 BIOS `.bin`                                         | PCSX2                                |
+| [PS3](../systems/ps3.md)                      | `ps3/`                            | `PS3UPDAT.PUP` via RPCS3 GUI                            | RPCS3                                |
+| [PSP](../systems/psp.md)                      | `psp/`                            | —                                                       | PPSSPP                               |
+| [PS Vita](../systems/psvita.md)               | `psvita/`                         | `PSVUPDAT.PUP` + `.rif` licenses via Vita3K GUI         | Vita3K (version-dependent)           |
+| [Master System](../systems/sms.md)            | `mastersystem/`                   | —                                                       | RetroArch + Genesis Plus GX          |
+| [Game Gear](../systems/sms.md)                | `gamegear/`                       | —                                                       | RetroArch + Genesis Plus GX          |
+| [Genesis / Mega Drive](../systems/genesis.md) | `megadrive/`                      | —                                                       | RetroArch + Genesis Plus GX          |
+| [Sega CD](../systems/genesis.md)              | `segacd/`                         | `bios_CD_U.bin`, `bios_CD_E.bin`, `bios_CD_J.bin`       | RetroArch + Genesis Plus GX          |
+| [32X](../systems/genesis.md)                  | `sega32x/`                        | —                                                       | RetroArch + PicoDrive                |
+| [Saturn](../systems/saturn.md)                | `saturn/`                         | `sega_101.bin`, `mpr-17933.bin`                         | RetroArch + Beetle Saturn            |
+| [Dreamcast](../systems/dreamcast.md)          | `dreamcast/`                      | `dc/dc_boot.bin`, `dc/dc_flash.bin`                     | RetroArch + Flycast                  |
+| [Arcade](../systems/arcade.md)                | `arcade/`, `mame/`                | Per-board BIOS alongside ROMs                           | RetroArch + MAME / FB Neo            |
+| [Neo Geo](../systems/neogeo.md)               | `neogeo/`                         | `neogeo.zip` alongside ROMs                             | RetroArch + FB Neo                   |
+| [Neo Geo CD](../systems/neogeo.md)            | `neogeocd/`                       | `neocd.bin`, `neocd_f.bin`, `neocd_z.bin`               | RetroArch + NeoCD                    |
+| [PC Engine](../systems/pcengine.md)           | `pcengine/`                       | —                                                       | RetroArch + Beetle PCE               |
+| [PC Engine CD](../systems/pcengine.md)        | `pcenginecd/`                     | `syscard3.pce`                                          | RetroArch + Beetle PCE               |
+| [SuperGrafx](../systems/pcengine.md)          | `supergrafx/`                     | —                                                       | RetroArch + Beetle PCE               |
+| [Atari 2600](../systems/atari2600.md)         | `atari2600/`                      | —                                                       | RetroArch + Stella                   |
+
+### After dropping ROMs
+
+1. Launch **ES-DE** from RetroDeck's main menu (or boot straight into it via the Configurator).
+2. ES-DE scans `roms/` automatically and builds the system list.
+3. Configure controllers in ES-DE: `Menu → Input Device Settings`.
+4. For Steam integration (Gaming Mode), use **Configurator → Tools → Add to Steam** or manually add the RetroDeck Flatpak as a non-Steam game.
+
+### Common setup gotchas
+
+- **Folder names differ from EmuDeck** — e.g., RetroDeck uses `megadrive/` where EmuDeck may use `genesis/`; `n3ds/` vs `3ds/`. If in doubt, check the empty folder layout RetroDeck creates on first run.
+- **BIOS Checker flags missing files after an update** — RetroDeck occasionally renames or relocates expected BIOS paths between versions. Re-run the BIOS Checker after every Flatpak update.
+- **Can't find my save files on disk** — they're inside the Flatpak sandbox at `~/.var/app/net.retrodeck.retrodeck/`. Use **Configurator → Tools → Cloud Sync** or `cp` from that path.
 
 ## See also
 

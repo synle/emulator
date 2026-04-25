@@ -13,15 +13,19 @@
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Any hardware from the last 20 years. 1 GB RAM.
 
 **Android**
+
 - ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial.
 
 **iOS / iPadOS**
+
 - ✅ **iPad Pro 12.9" M1** — trivial.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 

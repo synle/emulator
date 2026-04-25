@@ -10,41 +10,45 @@
 
 - **BIOS** — the PlayStation's boot ROM. **Required** for all cores. Region matters (US / EU / JP); DuckStation autodetects and picks the right one.
 
-| File | Region | Required? |
-|---|---|---|
-| `scph5500.bin` | Japan | One of these matching your disc region |
-| `scph5501.bin` | US | — |
-| `scph5502.bin` | EU | — |
-| `scph101.bin` | PSone (US, works regionless for most games) | Alternative |
+| File           | Region                                      | Required?                              |
+| -------------- | ------------------------------------------- | -------------------------------------- |
+| `scph5500.bin` | Japan                                       | One of these matching your disc region |
+| `scph5501.bin` | US                                          | —                                      |
+| `scph5502.bin` | EU                                          | —                                      |
+| `scph101.bin`  | PSone (US, works regionless for most games) | Alternative                            |
 
 Legal source: dumped from your own PS1/PS2 using a softmod + tool like PS2 BIOS Dumper.
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Minimum: 2010-era dual-core + integrated GPU, 4 GB RAM.
 - Recommended: any modern CPU + any discrete GPU for 8× upscaling + PGXP.
 
 **Android**
+
 - Minimum: Snapdragon 665 / Dimensity 700, 4 GB RAM.
 - ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — DuckStation at 8× + PGXP is buttery.
 
 **iOS / iPadOS**
+
 - Minimum: A11 Bionic.
 - ✅ **iPad Pro 12.9" M1** — effortless at 8× upscale with PGXP.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** — DuckStation at 4–8× upscale + PGXP is flawless.
 - ✅ **Legion Go** — same, with headroom for high-res shaders.
 
 ## Recommended emulators
 
-| Emulator | Type | Notes |
-|---|---|---|
-| **DuckStation** | libretro core + standalone | Best overall — fast, accurate, great upscaling |
-| Beetle PSX HW | libretro core | Accurate; Vulkan/HW rendering |
-| PCSX-ReARMed | libretro core | Fastest on weak ARM hardware |
-| SwanStation | libretro fork of DuckStation | In RetroArch when DuckStation upstream core is missing |
+| Emulator        | Type                         | Notes                                                  |
+| --------------- | ---------------------------- | ------------------------------------------------------ |
+| **DuckStation** | libretro core + standalone   | Best overall — fast, accurate, great upscaling         |
+| Beetle PSX HW   | libretro core                | Accurate; Vulkan/HW rendering                          |
+| PCSX-ReARMed    | libretro core                | Fastest on weak ARM hardware                           |
+| SwanStation     | libretro fork of DuckStation | In RetroArch when DuckStation upstream core is missing |
 
 Default: **DuckStation** (standalone on desktop, Beetle PSX HW on Android).
 

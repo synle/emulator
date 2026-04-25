@@ -10,33 +10,37 @@
 
 - **Boot ROM** — the tiny 256-byte (GB) / 2048-byte (GBC) program that shows the Nintendo logo on startup. Optional; modern cores boot fine without it, but it adds the authentic startup animation and chime.
 
-| File | For | Required? |
-|---|---|---|
-| `dmg_boot.bin` | Original Game Boy boot screen | Optional |
-| `cgb_boot.bin` | Game Boy Color boot screen | Optional |
+| File           | For                           | Required? |
+| -------------- | ----------------------------- | --------- |
+| `dmg_boot.bin` | Original Game Boy boot screen | Optional  |
+| `cgb_boot.bin` | Game Boy Color boot screen    | Optional  |
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Any hardware from the last 15 years. 2 GB RAM.
 
 **Android**
+
 - ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial.
 
 **iOS / iPadOS**
+
 - ✅ **iPad Pro 12.9" M1** — trivial.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
 ## Recommended emulators
 
-| Emulator | Type | Notes |
-|---|---|---|
+| Emulator    | Type                       | Notes                                         |
+| ----------- | -------------------------- | --------------------------------------------- |
 | **SameBoy** | libretro core + standalone | Most accurate; Pixel-Art GBC palette switcher |
-| Gambatte | libretro core + standalone | Extremely accurate, older |
-| mGBA | libretro core + standalone | Also plays GBA; see [gba.md](gba.md) |
+| Gambatte    | libretro core + standalone | Extremely accurate, older                     |
+| mGBA        | libretro core + standalone | Also plays GBA; see [gba.md](gba.md)          |
 
 Default pick: **SameBoy** or **mGBA** (unified with GBA).
 

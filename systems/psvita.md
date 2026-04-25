@@ -11,27 +11,31 @@
 - **Firmware** — Sony Vita PUP update file; install via Vita3K's firmware installer so the emulator has the system modules needed by games.
 - **Keys** — per-game `zRIF` or `license.rif` licenses dumped from your modded Vita (NoNpDrm). Required to decrypt `.vpk` installers.
 
-| File | For | Required? |
-|---|---|---|
-| `PSVUPDAT.PUP` | Vita3K system firmware | Yes |
-| `license.rif` / `zRIF` license string | Per-game licenses | Yes for most PSN titles |
+| File                                  | For                    | Required?               |
+| ------------------------------------- | ---------------------- | ----------------------- |
+| `PSVUPDAT.PUP`                        | Vita3K system firmware | Yes                     |
+| `license.rif` / `zRIF` license string | Per-game licenses      | Yes for most PSN titles |
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Minimum: Intel i5 8th gen / Ryzen 5 3600, Vulkan 1.2 GPU with 4 GB VRAM, 8 GB RAM.
 - Recommended: Ryzen 5 5600 + RX 6600 / RTX 3050 and better.
 - Apple Silicon: M1 marginal; M1 Pro / M2+ better.
 
 **Android**
+
 - Minimum: Snapdragon 8 Gen 1, Vulkan 1.2+, 12 GB RAM.
 - ⚠️ **S24 Ultra** (SD 8 Gen 3) — the best-case Android scenario; many titles playable but expect compatibility gaps.
 - ⚠️ **Z Fold 5 / Tab S9 Ultra** (SD 8 Gen 2) — playable for simpler 2D/3D; heavy titles drop frames.
 
 **iOS / iPadOS**
+
 - ❌ **Not supported.**
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ⚠️ **Steam Deck** — playable for a growing subset of the library; expect to consult the Vita3K compatibility list title-by-title.
 - ✅ **Legion Go** — noticeably more headroom than the Deck for Vita.
 

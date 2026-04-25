@@ -11,37 +11,41 @@
 - **BIOS** — a copy of the console's boot ROM. NES cartridges don't use one, so you can ignore this unless you want Famicom Disk System support.
 - **FDS** (Famicom Disk System) — a Japanese-only floppy-disk peripheral. Requires `disksys.rom` to boot. Dump it from your own Famicom or find the hash-matching file from the MAME BIOS set.
 
-| File | For | Required? |
-|---|---|---|
+| File          | For                              | Required?   |
+| ------------- | -------------------------------- | ----------- |
 | `disksys.rom` | Famicom Disk System `.fds` games | Yes for FDS |
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Effectively zero. Any CPU from the last 15 years, integrated graphics, 2 GB RAM.
 
 **Android**
+
 - Minimum: any Snapdragon 600-class or later, 2 GB RAM.
 - ✅ **Galaxy S24 Ultra** (SD 8 Gen 3, 12 GB) — overkill; perfect.
 - ✅ **Galaxy Z Fold 5** (SD 8 Gen 2, 12 GB) — overkill; perfect.
 - ✅ **Galaxy Tab S9 Ultra** (SD 8 Gen 2, 12/16 GB) — overkill; perfect.
 
 **iOS / iPadOS**
+
 - Minimum: iPhone 6s / iPad Air 2.
 - ✅ **iPad Pro 12.9" M1** — trivially handles NES at any upscale + shaders.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** (OLED/LCD, Van Gogh APU, 16 GB) — effortless.
 - ✅ **Legion Go** (Ryzen Z1 Extreme, 16 GB) — effortless.
 
 ## Recommended emulators
 
-| Emulator | Type | Notes |
-|---|---|---|
-| **Mesen** | libretro core + standalone | Most accurate; handles FDS, VS. System, Dendy |
-| Nestopia UE | libretro core | Very accurate, lighter than Mesen |
-| FCEUmm | libretro core | Default in most packs; great compatibility |
-| QuickNES | libretro core | Speed-focused, low-end devices |
+| Emulator    | Type                       | Notes                                         |
+| ----------- | -------------------------- | --------------------------------------------- |
+| **Mesen**   | libretro core + standalone | Most accurate; handles FDS, VS. System, Dendy |
+| Nestopia UE | libretro core              | Very accurate, lighter than Mesen             |
+| FCEUmm      | libretro core              | Default in most packs; great compatibility    |
+| QuickNES    | libretro core              | Speed-focused, low-end devices                |
 
 For a single-core setup, pick **Mesen** (desktop) or **FCEUmm** (mobile / Switch-class hardware).
 

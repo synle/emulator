@@ -14,33 +14,37 @@
 - **UniBIOS** — a community replacement BIOS that lets you switch region, difficulty, and AES/MVS mode from an in-game menu. Drop into `neogeo.zip` in place of the stock BIOS.
 - **Neo Geo CD BIOS** — separate; required for CD discs.
 
-| File | For | Required? |
-|---|---|---|
-| `neogeo.zip` | AES / MVS cartridge games | Yes |
-| `neocd.bin`, `neocd_f.bin`, `neocd_z.bin` | Neo Geo CD | Yes for CD |
+| File                                      | For                       | Required?  |
+| ----------------------------------------- | ------------------------- | ---------- |
+| `neogeo.zip`                              | AES / MVS cartridge games | Yes        |
+| `neocd.bin`, `neocd_f.bin`, `neocd_z.bin` | Neo Geo CD                | Yes for CD |
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Any hardware. 2 GB RAM.
 
 **Android**
+
 - ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial, including Neo Geo CD.
 
 **iOS / iPadOS**
+
 - ✅ **iPad Pro 12.9" M1** — trivial.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
 ## Recommended emulators
 
-| Emulator | Type | Notes |
-|---|---|---|
-| **FB Neo** | libretro core | Best for Neo Geo AES/MVS |
-| **MAME** | libretro core + standalone | Also works; slightly heavier |
-| **NeoCD** | libretro core | Dedicated Neo Geo CD core (fork of NeoCD/SDL) |
+| Emulator   | Type                       | Notes                                         |
+| ---------- | -------------------------- | --------------------------------------------- |
+| **FB Neo** | libretro core              | Best for Neo Geo AES/MVS                      |
+| **MAME**   | libretro core + standalone | Also works; slightly heavier                  |
+| **NeoCD**  | libretro core              | Dedicated Neo Geo CD core (fork of NeoCD/SDL) |
 
 ## Per-platform install
 

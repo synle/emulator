@@ -1,0 +1,13 @@
+{
+  "name": "emulator-docs",
+  "version": "1.0.0",
+  "description": "Emulator setup guides for RetroArch, EmuDeck, and RetroDeck across Android, iOS, macOS, Windows, and Linux",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write \"**/*.md\"",
+    "format:check": "prettier --check \"**/*.md\""
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

@@ -81,14 +81,14 @@ ROMs are copied via Files.app → "On My iPhone" → RetroArch, or via iTunes/Fi
 
 Place BIOS files in `system/` under your RetroArch config directory:
 
-| OS | Path |
-|---|---|
-| Windows | `C:\RetroArch-Win64\system\` |
-| macOS | `~/Library/Application Support/RetroArch/system/` |
-| Linux (apt) | `~/.config/retroarch/system/` |
+| OS              | Path                                                         |
+| --------------- | ------------------------------------------------------------ |
+| Windows         | `C:\RetroArch-Win64\system\`                                 |
+| macOS           | `~/Library/Application Support/RetroArch/system/`            |
+| Linux (apt)     | `~/.config/retroarch/system/`                                |
 | Linux (Flatpak) | `~/.var/app/org.libretro.RetroArch/config/retroarch/system/` |
-| Android | `Internal Storage/RetroArch/system/` |
-| iOS | `On My iPhone/RetroArch/system/` |
+| Android         | `Internal Storage/RetroArch/system/`                         |
+| iOS             | `On My iPhone/RetroArch/system/`                             |
 
 Check required BIOS for each core at `Information → Core Information` after loading a core.
 
@@ -106,6 +106,44 @@ Check required BIOS for each core at `Information → Core Information` after lo
 ## Netplay
 
 `Main Menu → Netplay → Host` / `Refresh Room List`. Works cross-platform as long as the same core + same ROM hash are loaded.
+
+## Per-system setup
+
+For each system, this table lists the **best libretro core** (in bold), when to prefer an alternative, the BIOS files you need to drop into `system/`, and notable gotchas. See the [BIOS paths](#bios) above for where `system/` lives on each OS, and the individual system docs under [systems/](../systems/) for full detail.
+
+| System                                        | Best core (and why)                                                                    | Alternatives                                                                                   | BIOS in `system/`                                                                                                                                           |
+| --------------------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [NES](../systems/nes.md)                      | **Mesen** — most accurate; supports HD packs, Famicom Disk System, VS. System          | FCEUmm (lighter, great compat) for low-end phones; Nestopia UE middle-ground                   | FDS: `disksys.rom`                                                                                                                                          |
+| [SNES](../systems/snes.md)                    | **Snes9x** — best compat-per-CPU-cycle; just works                                     | bsnes-mercury-accuracy for cycle accuracy + Super Game Boy; bsnes-hd-beta for widescreen hacks | SGB: `sgb.boot.rom`, `sgb1.sfc` / `sgb2.sfc` (optional)                                                                                                     |
+| [N64](../systems/n64.md)                      | **Mupen64Plus-Next** — default, fastest, most portable                                 | ParaLLEl N64 on desktop Vulkan when you hit graphical bugs (Majora's Mask, Rare titles)        | —                                                                                                                                                           |
+| [GameCube](../systems/gamecube.md)            | **Dolphin** (libretro) — only option inside RetroArch                                  | —                                                                                              | —                                                                                                                                                           |
+| [Wii](../systems/wii.md)                      | **Dolphin** (libretro) — only option inside RetroArch                                  | —                                                                                              | —                                                                                                                                                           |
+| [Wii U](../systems/wiiu.md)                   | — no libretro core                                                                     | —                                                                                              | —                                                                                                                                                           |
+| [Switch](../systems/switch.md)                | — no libretro core                                                                     | —                                                                                              | —                                                                                                                                                           |
+| [GB / GBC](../systems/gb.md)                  | **SameBoy** — most accurate; pixel-perfect color math                                  | Gambatte if SameBoy isn't built for your platform; mGBA to unify with GBA                      | `dmg_boot.bin`, `cgb_boot.bin` (optional — startup chime only)                                                                                              |
+| [GBA](../systems/gba.md)                      | **mGBA** — the definitive GBA core                                                     | VBA-M (older); gpSP on very old ARM hardware                                                   | `gba_bios.bin` (recommended — enable "Use BIOS if found")                                                                                                   |
+| [NDS](../systems/nds.md)                      | **melonDS** — active, accurate, DSi-capable                                            | DeSmuME for a few compat edge cases                                                            | `bios7.bin`, `bios9.bin`, `firmware.bin` (optional for DS, required for DSi); DSi adds `dsi_bios7.bin`, `dsi_bios9.bin`, `dsi_firmware.bin`, `dsi_nand.bin` |
+| [3DS](../systems/3ds.md)                      | — (libretro Citra is obsolete)                                                         | Use [standalone Azahar / Lime3DS](../systems/3ds.md)                                           | —                                                                                                                                                           |
+| [PS1](../systems/ps1.md)                      | **Beetle PSX HW** — desktop best: Vulkan upscaling + high accuracy                     | SwanStation for speed+accuracy balance (default on Deck); PCSX-ReARMed for low-end ARM         | `scph5500.bin` (JP), `scph5501.bin` (US), `scph5502.bin` (EU)                                                                                               |
+| [PS2](../systems/ps2.md)                      | **LRPS2 / PCSX2** (libretro) — only option inside RetroArch                            | Prefer [standalone PCSX2](../systems/ps2.md) — libretro lags significantly                     | PS2 BIOS `.bin` (e.g. `SCPH-70012.bin`)                                                                                                                     |
+| [PSP](../systems/psp.md)                      | **PPSSPP** — only core                                                                 | — (but standalone PPSSPP has more per-game settings)                                           | —                                                                                                                                                           |
+| [PS Vita](../systems/psvita.md)               | — no libretro core                                                                     | Use [standalone Vita3K](../systems/psvita.md)                                                  | —                                                                                                                                                           |
+| [PS3](../systems/ps3.md)                      | — no libretro core                                                                     | Use [standalone RPCS3](../systems/ps3.md)                                                      | —                                                                                                                                                           |
+| [SMS / Game Gear](../systems/sms.md)          | **Genesis Plus GX** — best overall; also does SG-1000                                  | PicoDrive on weak ARM                                                                          | `bios.sms`, `bios_J.sms` (optional)                                                                                                                         |
+| [Genesis / Mega Drive](../systems/genesis.md) | **Genesis Plus GX** — default; Genesis + Sega CD + SMS + GG                            | BlastEm for cycle-accurate playback; **PicoDrive for 32X**                                     | Sega CD: `bios_CD_U.bin`, `bios_CD_E.bin`, `bios_CD_J.bin`                                                                                                  |
+| [Saturn](../systems/saturn.md)                | **Beetle Saturn** — most accurate (native-res only)                                    | Kronos if you want 2×/4× upscaling (sacrifices some accuracy); YabaSanshiro on Android         | `sega_101.bin` (JP), `mpr-17933.bin` (US/EU)                                                                                                                |
+| [Dreamcast](../systems/dreamcast.md)          | **Flycast** — only serious option; Naomi + Atomiswave too                              | —                                                                                              | `dc/dc_boot.bin`, `dc/dc_flash.bin`. Naomi: `naomi.zip` in `system/dc/`. Atomiswave: `awbios.zip`                                                           |
+| [Arcade](../systems/arcade.md)                | **FB Neo** for CPS1/2/3 + Neo Geo + Cave + Taito; **MAME Current** for everything else | MAME 2003-Plus for Raspberry Pi / very old Android                                             | Per-board BIOS (e.g. `cps2_bios.zip`) alongside ROM zips, not in `system/`                                                                                  |
+| [Neo Geo](../systems/neogeo.md)               | **FB Neo** — fastest + most accurate                                                   | MAME Current if your set is MAME-only; NeoCD for Neo Geo CD                                    | Neo Geo CD: `neocd.bin`, `neocd_f.bin`, `neocd_z.bin` in `system/neocd/`. AES/MVS: `neogeo.zip` (or UniBIOS) in the ROM folder                              |
+| [PC Engine / TG-16](../systems/pcengine.md)   | **Beetle PCE** — accurate; HuCard + CD + SuperGrafx                                    | Beetle PCE Fast on low-end ARM                                                                 | `syscard3.pce` (CD only)                                                                                                                                    |
+| [Atari 2600](../systems/atari2600.md)         | **Stella** — only option                                                               | —                                                                                              | —                                                                                                                                                           |
+
+### Common setup gotchas
+
+- **"ROM didn't load / core reported missing BIOS"** — check the hash of your BIOS files against the [libretro BIOS reference](https://docs.libretro.com/guides/bios/). RetroArch shows the required BIOS under `Information → Core Information` after loading a core.
+- **"Scan directory didn't add my games"** — scanning uses RedumpDB / No-Intro hashes. If your dumps are trimmed or intro-patched, they won't match; use `Import Content → Manual Scan` with the parent playlist, or load manually via `Load Content`.
+- **Disc-based cores want `.cue` or `.chd`, not `.bin`** — the `.cue` file is the table of contents. For CHD (Compressed Hunks of Data) use `chdman createcd` from the MAME tools to convert.
+- **Multi-disc games** — create an `.m3u` text file with one disc path per line, then load the `.m3u` instead of any individual disc.
 
 ## See also
 

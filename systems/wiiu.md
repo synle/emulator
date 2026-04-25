@@ -11,25 +11,29 @@
 - **Keys** — Wii U titles are encrypted; Cemu needs your console's keys (`keys.txt`) dumped from your own Wii U via dumpling/CFW.
 - **MLC dump** — optional; the Wii U's internal flash memory. Dumping it unlocks system apps (Friend List, Mii Maker), online features, and makes some games more compatible.
 
-| File | For | Required? |
-|---|---|---|
-| `keys.txt` | Cemu decryption | Required for most encrypted dumps |
-| MLC01 dump | System apps / eShop content | Optional |
+| File       | For                         | Required?                         |
+| ---------- | --------------------------- | --------------------------------- |
+| `keys.txt` | Cemu decryption             | Required for most encrypted dumps |
+| MLC01 dump | System apps / eShop content | Optional                          |
 
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Minimum: Intel i5 6th gen / Ryzen 5 1600, GTX 1060 / RX 580, 8 GB RAM, Vulkan 1.2+.
 - Recommended: Ryzen 5 5600 / i5 12400 + RTX 3060 / RX 6600 XT for 4K via graphic packs.
 - Apple Silicon: M1 Pro and up — Cemu performs surprisingly well on M-series Macs.
 
 **Android**
+
 - ❌ **Not officially supported.** Community Cemu Android forks exist but are experimental.
 
 **iOS / iPadOS**
+
 - ❌ **Not supported.**
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ⚠️ **Steam Deck** — many games playable with the FPS++ graphic pack (BOTW, MK8, Wind Waker HD); others hitch badly. Use native res.
 - ✅ **Legion Go** — comfortably handles the Cemu library at 1080p with FPS++.
 

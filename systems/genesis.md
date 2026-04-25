@@ -16,8 +16,8 @@
 - **Sega CD BIOS** — **required** for Sega CD discs. Region-specific; use the one matching your discs.
 - **32X BIOS** — none strictly required; cores embed the necessary code.
 
-| File | For | Required? |
-|---|---|---|
+| File            | For        | Required?             |
+| --------------- | ---------- | --------------------- |
 | `bios_CD_U.bin` | US Sega CD | Required for US discs |
 | `bios_CD_E.bin` | EU Mega-CD | Required for EU discs |
 | `bios_CD_J.bin` | JP Mega-CD | Required for JP discs |
@@ -25,25 +25,29 @@
 ### System requirements
 
 **Desktop (Windows / macOS / Linux)**
+
 - Any hardware. Sega CD video CPU emulation is still trivial.
 
 **Android**
+
 - ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial; 32X and Sega CD included.
 
 **iOS / iPadOS**
+
 - ✅ **iPad Pro 12.9" M1** — trivial.
 
 **Handhelds (SteamOS / Windows handhelds)**
+
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
 ## Recommended emulators
 
-| Emulator | Type | Notes |
-|---|---|---|
-| **Genesis Plus GX** | libretro core | Default; Master System, Game Gear, Genesis, Sega CD |
-| **PicoDrive** | libretro core | Handles 32X too; fast |
-| **BlastEm** | libretro core + standalone | Cycle-accurate Genesis |
+| Emulator            | Type                       | Notes                                               |
+| ------------------- | -------------------------- | --------------------------------------------------- |
+| **Genesis Plus GX** | libretro core              | Default; Master System, Game Gear, Genesis, Sega CD |
+| **PicoDrive**       | libretro core              | Handles 32X too; fast                               |
+| **BlastEm**         | libretro core + standalone | Cycle-accurate Genesis                              |
 
 Default: **Genesis Plus GX** for Genesis + Sega CD; add **PicoDrive** for 32X.
 
