@@ -2,33 +2,38 @@
 
 Notes for Claude Code (and any other contributor) working in this repo.
 
-## Formatting — always run before commit and push
+## Pre-commit / Pre-push
 
-All Markdown in this repo is formatted with **Prettier**. Before creating a commit and pushing, you **must** run:
+Before creating a commit, run in this order:
 
-```bash
-npm run format
+1. **`npm test`** — must pass (covers `clean.js` rules and integration). If tests fail, fix them before committing.
+2. **`npm run format`** — formats Markdown, JS, and JSON with Prettier; include any resulting changes in the same commit.
+
+The workflow is: **edit → `npm test` → `npm run format` → `git add` → commit → push**. If a commit is already made and `npm run format` only then produces changes, amend is not allowed — create a follow-up `style: prettier` commit instead.
+
+**Enforcement:** a git pre-commit hook in `.githooks/pre-commit` runs both checks automatically. It's activated by running `npm install` once per clone (the `prepare` script points `core.hooksPath` at `.githooks`). If the hook blocks a commit, fix the tests / run `npm run format`, then re-stage and commit.
+
+## Inline Documentation
+
+When adding or modifying any function, class, or exported symbol in JS, include inline **JSDoc** comments documenting purpose, parameters, and return values:
+
+```js
+/**
+ * Short summary of what the function does.
+ * @param {string} name - Description of the parameter.
+ * @returns {boolean} What the return value represents.
+ */
+function doThing(name) { ... }
 ```
 
-If dependencies are missing, install them first:
-
-```bash
-npm install
-```
-
-Then verify nothing is broken:
-
-```bash
-npm run format:check
-```
-
-The workflow is: **edit → `npm run format` → `git add` → commit → push**. Do not push unformatted Markdown.
+Prefer JSDoc over free-form comments for anything a caller needs to understand. Keep non-JSDoc comments only for explaining _why_ something non-obvious is done inside a function body.
 
 ## Repo layout
 
 - `apps/` — per-frontend setup docs (RetroArch, EmuDeck, RetroDeck).
 - `systems/` — per-system docs (one file per console). Each covers install on Android, iOS, macOS, Windows, and Linux (Ubuntu), plus how the system maps onto the three frontends.
 - `README.md` — index plus the aggregate support matrix and per-device compatibility grid.
+- `clean.js` — Node.js ROM filename cleaner (zero deps, uses `fs`/`path` only). Strips GoodTools/No-Intro junk (`[!]`, `[a1]`, `(Hack)`, `(Beta)`, etc.) while preserving region/language/version/disc tags. Run with `node clean.js <rom-folder> [<rom-folder>...] [--dry-run]`. Tested via `npm test`.
 
 ## When adding a new system doc
 
@@ -40,7 +45,7 @@ The workflow is: **edit → `npm run format` → `git add` → commit → push**
    - Link in the "By System" section.
    - Row in the support matrix table.
 4. If the system has unique setup steps, also add a row to the per-system tables in `apps/retroarch.md`, `apps/emudeck.md`, and `apps/retrodeck.md`.
-5. Run `npm run format` before committing.
+5. Run `npm test` and `npm run format` before committing (the pre-commit hook will refuse the commit otherwise).
 
 ## Writing style
 

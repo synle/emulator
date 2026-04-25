@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Pre-commit hook enforced per CLAUDE.md:
+#   1. npm test — must pass
+#   2. npm run format:check — all files must be prettier-clean
+#
+# Activated automatically by the "prepare" npm script (runs after `npm install`),
+# which sets `git config --local core.hooksPath .githooks`.
+set -e
+
+echo "▶ pre-commit: npm test"
+npm test --silent
+
+echo "▶ pre-commit: npm run format:check"
+npm run format:check --silent
+
+echo "✅ pre-commit checks passed"
