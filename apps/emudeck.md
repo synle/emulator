@@ -151,6 +151,52 @@ EmuDeck creates a unified layout under `~/Emulation/` (or your chosen drive). Dr
 - **Empty ROM folder after install** — EmuDeck only creates folders you chose to install emulators for. Missing a system? Run **Manage Emulators → [System] → Install**.
 - **Deck switches emulator at every update** — pin your choice under **Manage Emulators → [System] → Emulator** (e.g., force DuckStation standalone over RetroArch for PS1).
 
+## Backup & restore
+
+EmuDeck keeps everything under a single `~/Emulation/` tree (or wherever you chose at install time). Back up that tree and you've captured BIOS, save files, save states, screenshots, Steam ROM Manager config, and ES-DE customizations.
+
+### What lives where
+
+| Path (under `~/Emulation/`) | What it holds                                                                                | Worth backing up?                          |
+| --------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `bios/`                     | All BIOS / firmware dumps                                                                    | Yes (hard to re-collect)                   |
+| `saves/`                    | Per-emulator save files, memory cards                                                        | Yes (unique)                               |
+| `storage/`                  | Shared save states, screenshots                                                              | Yes                                        |
+| `tools/`                    | Steam ROM Manager config, ES-DE preferences                                                  | Yes                                        |
+| `roms/`                     | ROMs                                                                                         | Optional (usually huge, often re-dumpable) |
+| —                           | EmuDeck's own settings live at `~/emudeck/` (Linux) — regenerate by re-running the installer | Usually skip                               |
+
+EmuDeck itself is reproducible from the installer — the data under `~/Emulation/` is what's irreplaceable.
+
+### Paths per OS
+
+| OS                 | Default root                                                               |
+| ------------------ | -------------------------------------------------------------------------- |
+| Linux / Steam Deck | `~/Emulation/` (or `/run/media/deck/<SD>/Emulation/` if you chose SD card) |
+| macOS              | `~/Emulation/`                                                             |
+| Windows            | `%USERPROFILE%\Emulation\`                                                 |
+
+Per-emulator configuration (PCSX2 settings, Dolphin graphics config, etc.) lives in each emulator's own dir — usually under `~/.config/`, `~/.var/app/<flatpak-id>/config/`, or `%APPDATA%\` on Windows. If you want those too, add the specific paths to the backup script.
+
+### Script
+
+Use [`scripts/emudeck-backup.sh`](../scripts/emudeck-backup.sh):
+
+```bash
+# Back up the default set (bios + saves + storage + tools)
+./scripts/emudeck-backup.sh backup /mnt/external
+
+# Include ROMs: uncomment the `roms` line in the script's PATHS array first
+
+# Restore
+./scripts/emudeck-backup.sh restore /mnt/external/emudeck-backup-20260424-120000.tar.gz
+
+# Non-default install root
+SRC_DIR=/run/media/deck/MYSDCARD/Emulation ./scripts/emudeck-backup.sh backup
+```
+
+After restoring, run **EmuDeck → Manage Emulators → BIOS Checker** to confirm BIOS files are intact.
+
 ## See also
 
 - [RetroArch](retroarch.md) — one of the cores EmuDeck installs

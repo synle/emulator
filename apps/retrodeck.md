@@ -162,6 +162,45 @@ Because RetroDeck is a Flatpak sandbox, per-emulator configuration lives at `~/.
 - **BIOS Checker flags missing files after an update** — RetroDeck occasionally renames or relocates expected BIOS paths between versions. Re-run the BIOS Checker after every Flatpak update.
 - **Can't find my save files on disk** — they're inside the Flatpak sandbox at `~/.var/app/net.retrodeck.retrodeck/`. Use **Configurator → Tools → Cloud Sync** or `cp` from that path.
 
+## Backup & restore
+
+RetroDeck has two parallel trees you must preserve together:
+
+1. **`~/retrodeck/`** — user data (BIOS, saves, states, screenshots, and optionally ROMs).
+2. **`~/.var/app/net.retrodeck.retrodeck/`** — the Flatpak sandbox, which holds per-emulator configs (Dolphin graphics, PCSX2 game fixes, RetroArch per-core options, etc.).
+
+Backing up only `~/retrodeck/` loses your per-emulator tweaks. Backing up only the Flatpak dir loses your saves. Do both.
+
+### What lives where
+
+| Path                                         | What it holds                                   | Worth backing up? |
+| -------------------------------------------- | ----------------------------------------------- | ----------------- |
+| `~/retrodeck/bios/`                          | BIOS / firmware                                 | Yes               |
+| `~/retrodeck/saves/`                         | Save files across all bundled emulators         | Yes               |
+| `~/retrodeck/states/`                        | Save states                                     | Yes               |
+| `~/retrodeck/screenshots/`                   | Captures                                        | Optional          |
+| `~/retrodeck/roms/`                          | ROMs                                            | Optional (large)  |
+| `~/.var/app/net.retrodeck.retrodeck/config/` | Per-emulator configuration files                | Yes               |
+| `~/.var/app/net.retrodeck.retrodeck/data/`   | Per-emulator runtime data (Wii NAND, VMU, etc.) | Yes               |
+
+### Script
+
+Use [`scripts/retrodeck-backup.sh`](../scripts/retrodeck-backup.sh). It archives both trees at once, labels them inside the tarball, and routes each back to the correct location on restore.
+
+```bash
+# Back up
+./scripts/retrodeck-backup.sh backup /mnt/external
+
+# Restore (existing dirs moved aside as <dir>.bak-<timestamp>)
+./scripts/retrodeck-backup.sh restore /mnt/external/retrodeck-backup-20260424-120000.tar.gz
+```
+
+To include ROMs or change paths, edit the `SOURCES` array at the top of the script — each entry is `LABEL|ROOT_DIR|rel_path1,rel_path2,...`.
+
+### Cloud sync alternative
+
+RetroDeck has built-in sync via the Configurator → **Tools → Cloud Sync** (Syncthing, rclone). Use that for continuous save sync and the script above for full snapshots before major updates.
+
 ## See also
 
 - [EmuDeck](emudeck.md) — alternative approach, multi-platform

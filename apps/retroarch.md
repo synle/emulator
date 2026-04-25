@@ -145,6 +145,58 @@ For each system, this table lists the **best libretro core** (in bold), when to 
 - **Disc-based cores want `.cue` or `.chd`, not `.bin`** — the `.cue` file is the table of contents. For CHD (Compressed Hunks of Data) use `chdman createcd` from the MAME tools to convert.
 - **Multi-disc games** — create an `.m3u` text file with one disc path per line, then load the `.m3u` instead of any individual disc.
 
+## Backup & restore
+
+RetroArch stores everything in a single config directory. Back up that one tree and you preserve your entire setup — controllers, core options, save files, save states, scanned playlists, cheats, shader presets, BIOS.
+
+### What lives where
+
+| Directory (relative to config root) | What it holds                                   | Worth backing up?              |
+| ----------------------------------- | ----------------------------------------------- | ------------------------------ |
+| `retroarch.cfg`                     | Main config (video, input, audio, paths)        | Yes                            |
+| `config/`                           | Per-core option overrides, remap files          | Yes                            |
+| `system/`                           | BIOS / firmware dumps                           | Yes (hard to re-collect)       |
+| `saves/`                            | SRAM, memory-card, and cart saves               | Yes (unique)                   |
+| `states/`                           | Save states                                     | Yes                            |
+| `playlists/`                        | Scanned content playlists (`.lpl`)              | Yes                            |
+| `cheats/`                           | User cheat files                                | Yes                            |
+| `screenshots/`                      | In-game captures                                | Optional                       |
+| `overlays/`, `shaders/`             | Custom overlays/bezels/shader presets you added | Yes                            |
+| `downloads/`                        | ROMs/cores pulled via the in-app updater        | Usually skip (re-downloadable) |
+| `thumbnails/`                       | Scraped box art                                 | Skip (large, re-downloadable)  |
+| `assets/`                           | Default UI assets                               | Skip (re-downloadable)         |
+
+### Config root per OS
+
+| OS                     | Default path                                               |
+| ---------------------- | ---------------------------------------------------------- |
+| Windows                | `C:\RetroArch-Win64\` (portable) or `%APPDATA%\RetroArch\` |
+| macOS                  | `~/Library/Application Support/RetroArch/`                 |
+| Linux (apt / AppImage) | `~/.config/retroarch/` + `~/.local/share/retroarch/`       |
+| Linux (Flatpak)        | `~/.var/app/org.libretro.RetroArch/config/retroarch/`      |
+| Android                | `Internal Storage/RetroArch/`                              |
+| iOS                    | `On My iPhone/RetroArch/` (access via Files.app)           |
+
+### Script
+
+Use [`scripts/retroarch-backup.sh`](../scripts/retroarch-backup.sh). It auto-detects the config root on Linux (native + Flatpak) and macOS; the `PATHS` list at the top of the script is easy to edit.
+
+```bash
+# Back up to the current directory
+./scripts/retroarch-backup.sh backup
+
+# Back up to a specific location
+./scripts/retroarch-backup.sh backup /mnt/external
+
+# Restore (existing config is moved aside as retroarch.bak-<timestamp>)
+./scripts/retroarch-backup.sh restore retroarch-backup-20260424-120000.tar.gz
+
+# Override the source dir (portable installs, Windows via WSL, etc.)
+SRC_DIR=/path/to/RetroArch ./scripts/retroarch-backup.sh backup
+```
+
+On Android / iOS, copy the `RetroArch/` folder manually via your file manager (Files.app on iOS, any file manager with storage access on Android).
+
 ## See also
 
 - [EmuDeck](emudeck.md) — configures RetroArch automatically for you
