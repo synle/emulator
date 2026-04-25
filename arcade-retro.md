@@ -1,16 +1,160 @@
-# Building a dedicated retro arcade on a Raspberry Pi
+# Building a dedicated retro arcade
 
-End-to-end guide for turning a Raspberry Pi into a single-purpose retro game console — the kind you plug into a TV or stuff inside a bartop arcade cabinet and never think about again. Covers the last three Pi generations, which emulators each can realistically run, and the hardware + software choices that matter.
+End-to-end guide for putting together a single-purpose retro arcade — either by **modding a commercial cabinet you already own**, **building from a DIY shell/kit**, or **rolling your own on a Raspberry Pi**. Covers the hardware, software, and decision-making for each path.
 
-- [Pick a Raspberry Pi](#pick-a-raspberry-pi)
-- [System capability per Pi](#system-capability-per-pi)
-- [Shopping list](#shopping-list)
-- [Pick a distro](#pick-a-distro-batocera-vs-retropie-vs-lakka)
-- [Install and first boot](#install-and-first-boot)
-- [Add BIOS, ROMs, controllers](#add-bios-roms-controllers)
-- [Arcade cabinet build](#arcade-cabinet-build)
-- [Tips and gotchas](#tips-and-gotchas)
-- [Troubleshooting](#troubleshooting)
+- [Modding a commercial cabinet](#modding-a-commercial-cabinet)
+- [Starting from scratch: shells, kits, plans](#starting-from-scratch-shells-kits-plans)
+- [The Raspberry Pi path](#the-raspberry-pi-path)
+  - [Pick a Raspberry Pi](#pick-a-raspberry-pi)
+  - [System capability per Pi](#system-capability-per-pi)
+  - [Shopping list](#shopping-list)
+  - [Pick a distro](#pick-a-distro-batocera-vs-retropie-vs-lakka)
+  - [Install and first boot](#install-and-first-boot)
+  - [Add BIOS, ROMs, controllers](#add-bios-roms-controllers)
+  - [Arcade cabinet build](#arcade-cabinet-build)
+  - [Tips and gotchas](#tips-and-gotchas)
+  - [Troubleshooting](#troubleshooting)
+
+---
+
+## Modding a commercial cabinet
+
+If you already own (or want to buy) a consumer-grade "home arcade" cabinet, you can usually rip out the stock logic board and drop in a real emulator host (Pi, mini PC, or laptop). The stock panel, joysticks, buttons, screen, speakers, and artwork stay — you just replace the brain.
+
+### Arcade1Up (the biggest modding community by far)
+
+Arcade1Up has shipped dozens of cabinet models across four+ "generations". Not all are equally mod-friendly; the two numbers that matter are **screen size** and **panel connectors**.
+
+| Gen            | Years     | Screen         | Typical models                                                             | Mod difficulty                                        |
+| -------------- | --------- | -------------- | -------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 1              | 2018–2019 | 17"            | Street Fighter II CE, Mortal Kombat, Galaga, Centipede, Rampage, Asteroids | Easy — LVDS display + simple wiring; plenty of guides |
+| 2              | 2019–2020 | 17"            | Marvel Super Heroes, Big Buck Hunter, NBA Jam, X-Men vs Street Fighter     | Easy — same LVDS bus                                  |
+| 3              | 2020–2021 | 17"–19"        | Ninja Turtles, Simpsons, Killer Instinct, Star Wars                        | Medium — some use proprietary cable routing           |
+| 4              | 2022+     | 19"–24"        | MK Gold, Big Blue Live, Pro Series cabinets (riser included)               | Medium — newer models use 4K LCDs with HDMI inputs    |
+| 5 / "Infinity" | 2024+     | 24" + rotating | Infinity Game Table derivatives, Pro Plus Jamma Edition                    | Easiest — some ship with HDMI and generic USB         |
+
+**Recommended targets for modding:**
+
+- **Street Fighter II Champion Edition** (Gen 1) — cheapest used, massive mod scene, most YouTube guides target this cabinet.
+- **Big Buck Hunter Pro** (Gen 2) — has a real light-gun rail you can rewire.
+- **Pro Series Mortal Kombat / X-Men** (Gen 3/4) — bigger screen + sturdier panel.
+- **Jamma Edition** (if you can find one) — already has a JAMMA connector; trivial to drop in a Pi or MisterFPGA.
+
+**What the mod actually involves:**
+
+1. Unscrew the back panel. Unplug the stock logic board (one ribbon cable to the screen, one harness to the joysticks/buttons, one to the speakers, power in).
+2. Replace with either:
+   - **Raspberry Pi 4 or 5** (cheapest; see [the Pi path](#the-raspberry-pi-path) below).
+   - A **mini PC** like an Intel NUC, Beelink, Minisforum UM780, or used ThinkCentre M75q — unlocks PS2 / GameCube / Wii / Switch / Wii U.
+   - A **Steam Deck dock + Deck** for the full EmuDeck experience in a cabinet.
+3. Connect the screen via HDMI. For **Gen 1–3 cabinets** you need an **LVDS-to-HDMI converter board** (~$25 on Amazon) because the stock screen is LVDS. Gen 4+ usually already has HDMI.
+4. Wire joystick + buttons into a **Zero Delay USB encoder** (~$15) or **Brook UFB** ($60, better) → plugs into the Pi / mini PC as a USB HID gamepad. Solder-free via dupont connectors.
+5. Reconnect speakers (most cabinets have a simple 2-wire amp; leave it alone or upgrade to a cheap PAM8610 class-D amp).
+6. Stuff the new hardware inside. Power from the stock AC-to-DC brick works for Pi; mini PCs usually want their own brick.
+
+Active community resources:
+
+- `/r/Arcade1Up` on Reddit — mod logs, model identification help.
+- **RGT85 on YouTube** — Gen 1 SF2 cabinet teardown and mod end-to-end.
+- **ETA Prime on YouTube** — multiple cabinets × multiple hosts (Pi, mini PC, Switch).
+- **Arcade1Up-modding forums** on badcaps.net.
+
+### AtGames Legends (Ultimate / Pinball / Gamer Pro)
+
+AtGames ships cabinets in the same price range as Arcade1Up. Legends Ultimate in particular runs Linux under the hood, so modding paths include both **full replacement** (gut the brain) and **sideload** (enable the AddOn folder to run extra ROMs alongside the stock library).
+
+| Model                    | Size         | Mod path                                                                     |
+| ------------------------ | ------------ | ---------------------------------------------------------------------------- |
+| Legends Ultimate (2020+) | Full upright | Sideload + AddOn: expose USB, drop RetroArch binaries; no disassembly needed |
+| Legends Pinball          | Full pinball | Linux underneath; active mod community for adding VPinball tables            |
+| Legends Gamer Pro / Mini | Bartop       | Full internals replacement with Pi / mini PC                                 |
+
+Legends Ultimate's built-in ArcadeNet streaming service is proprietary and not interesting to emulation; but the cabinet itself is solid hardware that responds well to being repurposed.
+
+### iiRcade
+
+iiRcade ships full-size cabinets running Android under the hood. You can root it and sideload RetroArch / Dolphin / PPSSPP directly. The stock 19" 1080p IPS screen is the best-in-class among consumer arcade cabinets, making iiRcade worth modding even though its stock game library is already decent.
+
+- Rooted iiRcade + sideloaded Lemuroid (RetroArch Android) = one of the best turnkey cabinet experiences with minimal disassembly.
+
+### Neo Legend / Neo Arcadia (European)
+
+Premium pre-built cabinets (~€1,500–€3,500) that ship with real arcade parts (Sanwa sticks, Suzo-Happ buttons) and genuinely play-grade monitors. They already run a customized RetroArch/EmulationStation underneath, so "modding" mostly means installing your own ROM library. Worth considering if your budget allows buying furniture quality without DIY.
+
+### Polycade / Recroom / Arcade Legacy
+
+Higher-end American offerings (~$1,500–$4,000) with wall-mount aluminum cabinets, great controls, premium monitors. Typically ship with a Windows PC inside running a curated launcher — you can wipe and install your own setup without voiding anything important.
+
+### Claw machines / retro TV stands
+
+If you find an old dead arcade cabinet at a flea market (Neo Geo MVS cabinet, Capcom Big Blue, Taito Vewlix) — **those are the real jackpot**. Original arcade chassis have proper monitors (sometimes CRTs), industrial controls, and cabinet construction that puts consumer gear to shame. Restoring one is a serious project but the result is indistinguishable from an actual arcade cabinet.
+
+Watch **eBay**, **Craigslist/OfferUp**, and the **KLOV** forum for leads.
+
+---
+
+## Starting from scratch: shells, kits, plans
+
+If you want to build rather than mod, three tiers exist — from "finish it over a weekend" to "full woodworking project".
+
+### Pre-cut flatpack kits (easiest DIY)
+
+Buy pre-cut MDF that you assemble yourself. All the complex woodwork is done; you screw it together, paint or vinyl-wrap, install electronics.
+
+| Seller / kit                               | Form factor        | ~Price    | Notes                                            |
+| ------------------------------------------ | ------------------ | --------- | ------------------------------------------------ |
+| **Paradise Arcade Shop** — "Flatpack" kits | Bartop, upright    | $180–$500 | US-based; lots of joystick/button add-on options |
+| **LVL Up Arcade Games** — MDF kits         | Bartop, pedestal   | $200–$400 | Based on open-source Koenigs plans               |
+| **Retro Active Arcade** (Etsy)             | Bartop             | $150–$300 | Hobbyist-grade; varies by seller                 |
+| **Project Arcade** pedestal kits           | Pedestal / standup | $300–$600 | Large "diner-style" cabinets                     |
+| **Xtension Arcade** control panels         | Just the panel     | $100–$300 | Drop-in replacements for stock Arcade1Up panels  |
+
+### Free open-source plans (pure DIY)
+
+For the woodworker. Download plans, buy MDF sheets, cut your own with a table saw or CNC.
+
+- **Koenigs-style bartop plans** — the community-standard 19"-monitor bartop; plans on https://www.kengoodhope.com/ and mirrored many places.
+- **Vewlix-style flatted upright** — Taito's late-2000s arcade cabinet design; free plans floating on arcade-modding forums.
+- **LVL Up / MDF bartop plans** — free download from their site in exchange for an email.
+- **MAMEroom.com** — large archive of free arcade cabinet plans (bartop, full size, cocktail).
+- **BYOAC (Build Your Own Arcade Controls)** — the original forum/wiki for DIY arcade, still active: https://www.arcadecontrols.com/ — thousands of build logs with plans and photos.
+
+Tool investment: table saw, pocket-hole jig, orbital sander. Budget ~$100 of MDF + $100 of T-molding / laminate per cabinet.
+
+### Tabletop / portable shells
+
+If you don't want furniture-grade, several projects give you a small play-anywhere arcade enclosure:
+
+| Project                     | Host        | Form factor             | Notes                                                   |
+| --------------------------- | ----------- | ----------------------- | ------------------------------------------------------- |
+| **Picade (Pimoroni)**       | Pi 4/5      | Bartop-like 10" LCD     | Kit with LCD, speakers, Sanwa-compatible buttons; ~$300 |
+| **GPi Case 2W** (Retroflag) | Pi Zero 2 W | Game Boy-style handheld | ~$70; cute, uses a tiny LCD                             |
+| **RetroPie Arcade-X**       | Pi 4        | Bartop (DIY MDF)        | Community-maintained build files                        |
+| **Argon POD** + stick       | Pi 4 / Pi 5 | Desk-sized              | Pi case + external arcade stick                         |
+
+### Well-known open-source cabinet projects
+
+These are software/hardware bundles where the cabinet design, controls, and software image are all published together — ready to clone.
+
+- **RetroFlag NESPi / SuperPi / MegaPi** — retro-console-shaped Pi cases that map the look of the machine they emulate. Not an arcade per se, but a popular "dedicated hardware" option.
+- **MiSTer FPGA** — open-source FPGA-based hardware that reimplements retro systems at the cycle level. Fits in a Pi-like form factor but uses a DE10-Nano FPGA board. Dramatically more accurate than a Pi for shmups/fighters. Pricey (~$250+) but the endgame for emulation purists. See https://mister-devel.github.io/.
+- **RetroPie's** community prebuilt images + the matching MDF cabinet plans (see BYOAC for matching hardware).
+- **Batocera** community has shared images paired with specific cabinets (Picade, Arcade1Up mods).
+- **OpenEmulator** + specific 3D-printable cabinets on Thingiverse / Printables.
+
+### What to buy for controls (regardless of cabinet)
+
+- **Joystick**: Sanwa JLF (~$20) is the fighting-game standard. Seimitsu LS-32 is an alternative with a shorter throw. Avoid sub-$10 generic sticks for anything serious.
+- **Buttons**: Sanwa OBSF-30 (~$3 each) × 6–8 per player.
+- **Encoder**: **Brook Universal Fighting Board (UFB)** ($60) is the gold standard — lag-free, supports all major consoles and PC simultaneously. **Zero Delay USB encoder** ($15) is the budget option; works fine but detected as a generic HID device.
+- **Trackball** (if you want Centipede / Marble Madness): Ultimarc U-Trak (~$80) + their I-PAC 2 encoder.
+- **Light gun** (if you want House of the Dead / Time Crisis): Sinden Lightgun ($130) — works on any LCD, ships with its own software.
+
+---
+
+## The Raspberry Pi path
+
+The rest of this doc covers the specific case of **building on a Raspberry Pi** — the cheapest way to get from zero to playing. If you're modding a commercial cabinet, most of the below still applies (swap "Pi" for "mini PC" mentally where appropriate).
 
 ---
 
