@@ -2,6 +2,10 @@
 
 Documentation for setting up retro gaming emulation across platforms (Android, iOS, macOS, Windows, Linux/Ubuntu).
 
+## Guides
+
+- **[Building a retro arcade on a Raspberry Pi](arcade-retro.md)** — end-to-end dedicated-hardware build: Pi model selection (Pi 3B+ / 4 / 5), per-Pi system capability, distro choice (Batocera / RetroPie / Lakka), cabinet construction, controls.
+
 ## Organization
 
 Docs are grouped two ways so you can read either by **what tool you're installing** or by **what system you want to play**.
