@@ -16,6 +16,40 @@ Docs are grouped two ways so you can read either by **what tool you're installin
 
 See [Choosing a frontend](#choosing-a-frontend-retroarch-vs-emudeck-vs-retrodeck) below for a detailed comparison and decision guide.
 
+### Streaming (play your emulator host from anywhere)
+
+If you want to run emulators on one machine and play from another — iPad on the couch, phone in bed, Apple TV in the living room — these are the options. Think of this category as **"the spiritual replacement for Plex Arcade."**
+
+| App                                                          | Platforms (host → client)                                               | Best for                                                    |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [Sunshine + Moonlight](apps/streaming/sunshine-moonlight.md) | Windows/macOS/Linux → everywhere (Win/Mac/Lin/Android/iOS/Apple TV/TVs) | Best overall. Open-source, lowest latency, HDR + 4K + HEVC. |
+| [Parsec](apps/streaming/parsec.md)                           | Windows/macOS/Linux → Win/Mac/Lin/Android/iOS/browser                   | The engine Plex Arcade actually used. Simpler setup.        |
+| [Steam Remote Play](apps/streaming/steam-remote-play.md)     | Steam host → Steam Link on phone / TV / tablet / PC                     | Free and zero-config if you already use Steam + EmuDeck.    |
+
+### Library frontends (pretty grid UI for your games)
+
+These give you the "box art, cover flow, pick and play" experience on top of whatever emulators you installed.
+
+| App                                               | Platforms                   | Highlight                                                      |
+| ------------------------------------------------- | --------------------------- | -------------------------------------------------------------- |
+| [Playnite](apps/launchers/playnite.md)            | Windows                     | Unifies Steam + Epic + GOG + emulators. Best Windows choice.   |
+| [ES-DE](apps/launchers/es-de.md)                  | Win / Mac / Linux / Android | Bundled inside EmuDeck and RetroDeck. Cross-platform standard. |
+| [Pegasus Frontend](apps/launchers/pegasus.md)     | Win / Mac / Linux / Android | Lightweight, fast, stunning themes.                            |
+| [LaunchBox / BigBox](apps/launchers/launchbox.md) | Windows                     | Commercial, most polished out-of-box 10-foot UI.               |
+| [OpenEmu](apps/launchers/openemu.md)              | macOS                       | Mac-native iTunes-style library. Zero config.                  |
+
+### Management (sync, verification, conversion)
+
+Tools that keep your setup organized and in sync across devices.
+
+| App                                                       | Purpose                                                                 |
+| --------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [Syncthing](apps/management/syncthing.md)                 | P2P save-file sync across devices (PC ↔ Deck ↔ phone).                  |
+| [rclone](apps/management/rclone.md)                       | Cloud sync to Google Drive, Dropbox, S3, 70+ providers.                 |
+| [RomVault / clrmamepro](apps/management/romvault.md)      | Verify and rebuild MAME / FBNeo / No-Intro / Redump ROM sets.           |
+| [Disc tools](apps/management/disc-tools.md)               | `chdman`, `maxcso`, dolphin-tool — compress discs losslessly.           |
+| [RetroAchievements](apps/management/retroachievements.md) | Community achievement service, like Steam achievements for retro games. |
+
 ### By System
 
 Each system doc explains how to get that console running on **Android, iOS, macOS, Windows, Linux**, and how it maps onto **RetroArch / EmuDeck / RetroDeck**.
