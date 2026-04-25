@@ -58,13 +58,90 @@ Requirements: Flatpak installed (`sudo apt install flatpak` + Flathub remote). E
 
 ### macOS
 
-1. Download `EmuDeck.dmg` from https://www.emudeck.com (Apple Silicon and Intel builds).
-2. Drag to `/Applications` and open. If Gatekeeper blocks:
+EmuDeck for macOS is in active beta. It works, but it's less polished than the Linux / Windows / Steam Deck tracks — occasional rough edges around specific emulators are normal. Apple Silicon is the intended target.
+
+**Requirements**
+
+- macOS 12 Monterey or later.
+- **Apple Silicon (M1 / M2 / M3 / M4) strongly preferred.** Some bundled emulators have no Intel build or run unacceptably slowly under Rosetta.
+- Administrator access (EmuDeck writes to `/Applications/`).
+- ~20 GB free for the default selection; more if you enable every emulator.
+
+**Install**
+
+1. Download `EmuDeck.dmg` from https://www.emudeck.com — the site serves the correct build for your Mac.
+2. Drag the installer to `/Applications`. First launch, right-click → **Open**. If Gatekeeper still blocks:
    ```bash
    xattr -dr com.apple.quarantine /Applications/EmuDeck.app
    ```
-3. macOS support covers: RetroArch, Dolphin, DuckStation, PCSX2, PPSSPP, MAME, melonDS, Citra (archive), Ryujinx. **Xenia and Cemu are not supported** (Windows-only emulators).
-4. ROMs: `~/Emulation/roms/`.
+3. On first run, pick **Easy Mode** (defaults) or **Custom Mode** (per-emulator selection). EmuDeck downloads each emulator into `/Applications/` as a normal `.app` bundle.
+4. Choose your data location — default `~/Emulation/`. You can point this at an external SSD if you want; just make sure macOS has granted the drive Full Disk Access in System Settings → Privacy.
+
+**What's bundled on macOS**
+
+| Emulator             | macOS status                                                         |
+| -------------------- | -------------------------------------------------------------------- |
+| RetroArch            | ✅ universal (Apple Silicon + Intel)                                 |
+| Dolphin (GC / Wii)   | ✅ Apple Silicon native; Intel universal                             |
+| DuckStation (PS1)    | ✅ universal                                                         |
+| PCSX2 (PS2)          | ✅ Apple Silicon native (M1+ required for good performance)          |
+| PPSSPP (PSP)         | ✅ universal                                                         |
+| MAME                 | ✅ native                                                            |
+| melonDS (DS)         | ✅ universal                                                         |
+| RPCS3 (PS3)          | ⚠️ Apple Silicon only, macOS 13+, lighter titles only                |
+| Ryujinx (Switch)     | ⚠️ archived upstream — EmuDeck tracks the forks; check current build |
+| Citra (3DS)          | ⚠️ archived — use standalone Azahar / Lime3DS separately             |
+| **Cemu** (Wii U)     | ❌ not bundled on macOS. Install community macOS port manually       |
+| **Xenia** (Xbox 360) | ❌ Windows-only, never shipping on macOS                             |
+
+**Default paths**
+
+| Directory                       | Path                                       |
+| ------------------------------- | ------------------------------------------ |
+| EmuDeck data                    | `~/Emulation/`                             |
+| BIOS                            | `~/Emulation/bios/`                        |
+| ROMs                            | `~/Emulation/roms/<system>/`               |
+| Saves                           | `~/Emulation/saves/`                       |
+| Per-emulator config (Dolphin)   | `~/Library/Application Support/Dolphin/`   |
+| Per-emulator config (PCSX2)     | `~/Library/Application Support/PCSX2/`     |
+| Per-emulator config (RetroArch) | `~/Library/Application Support/RetroArch/` |
+
+Open the data root in Finder:
+
+```bash
+open ~/Emulation
+```
+
+**First-run tips**
+
+1. Drop BIOS files into `~/Emulation/bios/` → **Manage Emulators → BIOS Checker** to verify hashes.
+2. Add ROMs per-system under `~/Emulation/roms/<system>/`. Folder names follow the EmuDeck table in [Per-system setup](#per-system-setup).
+3. Steam ROM Manager works on macOS if you have the Steam client installed — it adds non-Steam shortcuts pointing at each emulator.
+
+**Performance, M1 → M4**
+
+| Chip                 | Handles well                                                 | Borderline / workable                 | Skip                           |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------- | ------------------------------ |
+| M1 / M1 Pro / M1 Max | everything up to PS2 + Dreamcast + PSP; GameCube / Wii at 3× | Wii U (community port) lighter titles | Switch AAA 3D, PS3 AAA         |
+| M2 / M2 Pro / M2 Max | as M1 + PS3 lighter titles                                   | Switch 2D / lighter 3D                | Switch AAA 3D under heavy load |
+| M3 / M4 Pro / Max    | Switch forks at playable speed in many titles, PS3 mid-tier  | Switch AAA 3D                         | —                              |
+
+Intel Macs: EmuDeck runs but PS2 is marginal, PS3 / Switch / Wii U are not practical.
+
+**Updating**
+
+```bash
+# Per-emulator via EmuDeck GUI
+open /Applications/EmuDeck.app
+# → Manage Emulators → Update all
+
+# Or manually for standalone emulators you installed via Homebrew:
+brew upgrade --cask retroarch duckstation dolphin-emu ppsspp mgba melonds
+```
+
+**Uninstall**
+
+EmuDeck GUI → **Uninstall EmuDeck** removes the bundled emulators and the `/Applications/EmuDeck.app` entry. Your `~/Emulation/` (ROMs, BIOS, saves) is left intact; delete it manually if you want a clean slate.
 
 ## First run
 

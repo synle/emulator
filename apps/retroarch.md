@@ -21,16 +21,68 @@ winget install Libretro.RetroArch
 
 ### macOS
 
-1. Download the DMG (Metal or Intel) from retroarch.com.
-2. Drag RetroArch.app into `/Applications`.
-3. First launch: right-click → Open (unsigned build). If Gatekeeper blocks it:
+RetroArch ships as a universal binary (Apple Silicon + Intel) with a native Metal renderer. Builds are unsigned, so Gatekeeper will complain once; dismiss it and macOS remembers.
+
+**Requirements**
+
+- macOS 11.0 Big Sur or later (for the Metal build — the default).
+- Apple Silicon (M1 / M2 / M3 / M4) is native; Intel Macs run the universal build natively too. No Rosetta needed.
+
+**Install — option A: DMG (always has the latest upstream)**
+
+1. Download `RetroArch_Metal.dmg` from https://www.retroarch.com/?page=platforms.
+2. Open the DMG and drag **RetroArch.app** to `/Applications`.
+3. First launch: right-click the app → **Open** (unsigned builds need this one-time override). If Gatekeeper still blocks it:
    ```bash
    xattr -dr com.apple.quarantine /Applications/RetroArch.app
    ```
-4. Homebrew alternative:
-   ```bash
-   brew install --cask retroarch
-   ```
+
+**Install — option B: Homebrew**
+
+```bash
+brew install --cask retroarch          # universal Metal build
+# or the legacy OpenGL build for macOS 10.13–10.14:
+brew install --cask retroarch-metal
+```
+
+**Config / data paths on macOS**
+
+| Directory       | Path                                                    |
+| --------------- | ------------------------------------------------------- |
+| Config root     | `~/Library/Application Support/RetroArch/`              |
+| `retroarch.cfg` | `~/Library/Application Support/RetroArch/retroarch.cfg` |
+| System (BIOS)   | `~/Library/Application Support/RetroArch/system/`       |
+| Saves / states  | `…/saves/`, `…/states/`                                 |
+| Playlists       | `…/playlists/`                                          |
+| Cores           | `…/cores/`                                              |
+
+Open the config dir in Finder:
+
+```bash
+open ~/Library/Application\ Support/RetroArch
+```
+
+**Apple Silicon vs Intel performance**
+
+- **Apple Silicon (M1+)**: everything in this guide runs at max upscale. GameCube, Wii, PS1, PS2, N64 ParaLLEl-RDP, Dreamcast all hit native speed comfortably.
+- **Intel Macs**: RetroArch itself is native, but cores vary. 8-bit through PS1 is trivial. GameCube / Wii via the Dolphin libretro core run but with frame-pacing hiccups a fast Mac Pro masks. PS2 (LRPS2) is marginal even on top-end Intel chips; prefer [standalone PCSX2 Qt](../systems/ps2.md).
+
+**Recommended macOS-specific settings**
+
+- `Settings → Drivers → Video`: **metal** (default — leave it).
+- `Settings → Drivers → Audio`: **coreaudio3**.
+- `Settings → Video → Threaded Video`: **Off**. macOS compositor handles timing well; threaded video adds latency.
+- `Settings → Latency → Run-Ahead`: 1 for 2D systems; 0 on Intel under heavy cores.
+
+**Controllers on macOS**
+
+macOS natively pairs MFi, DualSense, DualShock 4, Xbox Series, Joy-Cons, and Switch Pro Controller over Bluetooth (System Settings → Bluetooth). Once paired, RetroArch's `Settings → Input → Port 1 Controls` auto-config picks them up.
+
+Wired Xbox controllers: pair fine via USB. GameCube controllers need the Mayflash or official Nintendo adapter.
+
+**Updating**
+
+RetroArch has no self-update on macOS. Re-download the DMG (or `brew upgrade --cask retroarch`) and drag to `/Applications` — your config under `~/Library/Application Support/RetroArch/` is preserved.
 
 ### Linux (Ubuntu / Debian)
 

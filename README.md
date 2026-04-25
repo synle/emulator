@@ -14,6 +14,8 @@ Docs are grouped two ways so you can read either by **what tool you're installin
 | [EmuDeck](apps/emudeck.md)     | Steam Deck, Linux, Windows, macOS | Fastest "everything works" setup                   |
 | [RetroDeck](apps/retrodeck.md) | Linux / SteamOS (Flatpak)         | Self-contained sandbox on Steam Deck / Linux       |
 
+See [Choosing a frontend](#choosing-a-frontend-retroarch-vs-emudeck-vs-retrodeck) below for a detailed comparison and decision guide.
+
 ### By System
 
 Each system doc explains how to get that console running on **Android, iOS, macOS, Windows, Linux**, and how it maps onto **RetroArch / EmuDeck / RetroDeck**.
@@ -107,6 +109,96 @@ Each system doc explains how to get that console running on **Android, iOS, macO
 | Switch (2D/indie)     | ⚠️                     | ⚠️                    | ⚠️                        | ❌                | ⚠️                  | ✅        |
 | Switch (AAA 3D)       | ❌                     | ❌                    | ❌                        | ❌                | ⚠️                  | ✅        |
 | PS3                   | ❌                     | ❌                    | ❌                        | ❌                | ⚠️ (lighter titles) | ⚠️        |
+
+## Choosing a frontend: RetroArch vs EmuDeck vs RetroDeck
+
+All three can get you playing. They differ in scope, platform reach, how much you can customize, and how much maintenance you sign up for.
+
+### Feature matrix
+
+| Feature                             | RetroArch                               | EmuDeck                                           | RetroDeck                             |
+| ----------------------------------- | --------------------------------------- | ------------------------------------------------- | ------------------------------------- |
+| What it is                          | A frontend that loads libretro cores    | An installer + configurator for many emulators    | A single Flatpak that bundles it all  |
+| Platforms                           | Windows / macOS / Linux / Android / iOS | SteamOS / Linux / Windows / macOS (beta)          | SteamOS / Linux (Flatpak only)        |
+| Install effort                      | Low                                     | Medium                                            | Very low                              |
+| Update model                        | Manual + in-app Online Updater          | Per-emulator via EmuDeck GUI                      | One `flatpak update` command          |
+| Configuration depth                 | Very high (every setting exposed)       | Medium — sensible defaults; per-emulator GUIs     | Low — Configurator hides most knobs   |
+| Uses upstream standalone emulators? | No (libretro cores only)                | Yes (Dolphin, PCSX2, Cemu, RPCS3, Ryujinx fork…)  | Yes (bundled inside the Flatpak)      |
+| Steam integration                   | Manual (add each as non-Steam game)     | Steam ROM Manager bundled                         | Add single Flatpak as non-Steam game  |
+| Cloud save sync                     | DIY (rclone, Syncthing)                 | DIY                                               | Built-in (Configurator → Cloud Sync)  |
+| Per-core / per-system tuning        | Best-in-class                           | Good (defaults + edit each emulator's own config) | Limited (Configurator toggles)        |
+| Covers Switch / PS3 / Wii U         | ❌ no libretro cores                    | ✅ bundles the right standalones                  | ✅ bundles the right standalones      |
+| Runs on Android / iOS               | ✅                                      | ❌                                                | ❌                                    |
+| Disk footprint (everything enabled) | ~2 GB + cores                           | 20–60 GB                                          | ~15 GB                                |
+| Uninstall cleanliness               | Delete folder                           | Uninstall script                                  | `flatpak uninstall` — fully sandboxed |
+
+### RetroArch
+
+**Pros**
+
+- Runs on **everything**, including iOS and Android — the only option on mobile.
+- Unified controller config, shader pipeline, and netplay across every system it supports.
+- Per-core run-ahead and input-latency controls are best-in-class.
+- Open source; plain-text `retroarch.cfg`; portable (copy the folder, copy your setup).
+- One learning curve works for 40+ systems.
+
+**Cons**
+
+- **No cores for Switch, PS3, Wii U, Xbox 360, PS Vita.**
+- libretro-wrapped versions of Dolphin and PCSX2 lag significantly behind the upstream standalones.
+- UI is dense and punishing for first-timers — every setting is reachable, none is signposted.
+- Unsigned macOS and iOS builds require one-time Gatekeeper override / sideloading.
+
+### EmuDeck
+
+**Pros**
+
+- One installer bootstraps RetroArch **plus** Dolphin, PCSX2, Cemu, RPCS3, the current Switch fork, DuckStation, PPSSPP, MAME, melonDS, Vita3K, and more — with solid defaults.
+- **Best Steam Deck integration**: Steam ROM Manager adds tiles to Gaming Mode in one click; bezels, aspect ratios, and controller profiles are Deck-tuned out of the box.
+- You get **standalone** emulators, so Switch / PS3 / Wii U are covered properly.
+- BIOS Checker, hardware profiles, and per-system presets reduce "why doesn't this work?" friction.
+- Cross-platform: SteamOS, Linux, Windows, and macOS (beta).
+
+**Cons**
+
+- Larger install (20–60 GB depending on which emulators you enable).
+- Not a single app — each bundled emulator still has its own GUI for deep tweaks.
+- **No Android / iOS.**
+- macOS track is beta and lags the Linux / Windows builds.
+- Emulator versions are decoupled; something can be bleeding edge while its neighbor is a release behind.
+
+### RetroDeck
+
+**Pros**
+
+- **Easiest setup on Steam Deck and Linux**: one Flatpak, one update command.
+- Fully sandboxed — cannot pollute your system, trivial to uninstall.
+- ES-DE frontend built in with sensible defaults; the Configurator centralizes common toggles (bezels, shaders, rewind, autosave).
+- Built-in cloud save sync (Syncthing / rclone).
+- Updates ship as a single package — no per-emulator version drift.
+
+**Cons**
+
+- **Linux / SteamOS only.** Dead end for Windows, macOS, Android, iOS.
+- Per-emulator config is behind sandbox paths (`~/.var/app/net.retrodeck.retrodeck/…`) — power-user tweaks are clumsy.
+- Updates are all-or-nothing; you can't pin a specific emulator version.
+- Less configurable than running emulators directly — if you want to, say, use a specific bsnes fork, you're better off with RetroArch or EmuDeck.
+
+### Quick decision guide
+
+| Your situation                                                           | Pick                                                            |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| Steam Deck, want the least fuss                                          | **RetroDeck**                                                   |
+| Steam Deck, want to tweak individual emulators                           | **EmuDeck**                                                     |
+| Windows or macOS, want one-install                                       | **EmuDeck**                                                     |
+| Linux desktop, want full control, don't need Switch / PS3 / Wii U        | **RetroArch**                                                   |
+| Same config across phone, tablet, PC                                     | **RetroArch** (only option on mobile)                           |
+| Want Switch / PS3 / Wii U                                                | **EmuDeck** (or install RPCS3 / Cemu / Ryujinx fork standalone) |
+| Want a single-folder portable setup you can copy between Windows PCs     | **RetroArch** (portable install)                                |
+| Prioritize lowest input latency for fighting-game / shmup play           | **RetroArch** (run-ahead is unmatched)                          |
+| Already have OpenEmu on a Mac and just want to add a few PSP / PS2 games | **Install PPSSPP / PCSX2 standalone** directly; skip all three  |
+
+Note: **RetroArch + EmuDeck are not mutually exclusive** — EmuDeck installs RetroArch as one of its components. Many people run EmuDeck to get the bundle, then configure RetroArch directly for the systems it handles best.
 
 ## Legal note
 

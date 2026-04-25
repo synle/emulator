@@ -16,7 +16,20 @@ RetroDeck is a **single Flatpak** that bundles RetroArch, standalone emulators, 
 | Android                            | ❌                | Not supported                                    |
 | iOS                                | ❌                | Not supported                                    |
 
-If you are on Windows or macOS, skip this doc and use [EmuDeck](emudeck.md) or individual emulators.
+If you are on Windows or macOS, skip this doc and use [EmuDeck](emudeck.md) or individual emulators. See [macOS alternatives](#macos-alternatives) below for specific recommendations.
+
+## macOS alternatives
+
+**RetroDeck does not support macOS.** It's built exclusively around Flatpak (Linux sandbox tech) with no equivalent container on macOS. Don't try to port it. Use one of these instead:
+
+| Option                                       | Best for                                                                            |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [EmuDeck for macOS](emudeck.md#macos)        | Closest equivalent — one install, auto-configures many emulators, Steam integration |
+| [OpenEmu](https://openemu.org)               | Mac-native polished frontend; wraps libretro cores for older systems                |
+| [RetroArch](retroarch.md#macos) + standalone | Most control; manual per-emulator install                                           |
+| Launchbox for Mac                            | Beta Mac build; commercial; rich metadata scraping                                  |
+
+For Apple Silicon Macs specifically, **EmuDeck for macOS + standalone PCSX2 / Dolphin / RPCS3** is the closest thing to the RetroDeck "one tool, everything works" experience. See [apps/emudeck.md — macOS](emudeck.md#macos).
 
 ## Install
 
