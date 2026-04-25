@@ -34,6 +34,11 @@
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+ / Pi 4 / Pi 5** — trivial; any Pi handles SameBoy / mGBA with LCD-grid shaders at full speed.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator    | Type                       | Notes                                         |

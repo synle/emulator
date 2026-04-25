@@ -35,6 +35,11 @@ Legal source: dumped from your own GBA via a homebrew tool like GBA Backup Tool 
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+ / Pi 4 / Pi 5** — trivial; mGBA at full speed, `gba_bios.bin` in `/userdata/bios/`.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator       | Type                       | Notes                                       |

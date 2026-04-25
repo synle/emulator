@@ -41,6 +41,12 @@
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+** — Genesis, Sega CD, SG-1000 all trivial. 32X via PicoDrive playable but may drop a frame on the heaviest titles.
+- ✅ **Pi 4 / Pi 5** — all of the above plus 32X at full speed.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator            | Type                       | Notes                                               |

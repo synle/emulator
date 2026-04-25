@@ -39,6 +39,13 @@
 - ✅ **Steam Deck** (Van Gogh APU, 16 GB) — effortless, even cycle-accurate bsnes.
 - ✅ **Legion Go** (Ryzen Z1 Extreme, 16 GB) — effortless.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+** — Snes9x at native, run-ahead 1–2 frames.
+- ✅ **Pi 4** — bsnes-mercury-accuracy at native, 4 frames run-ahead.
+- ✅ **Pi 5** — anything including bsnes-hd widescreen; plenty of headroom.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator             | Type                       | Notes                                           |

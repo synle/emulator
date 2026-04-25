@@ -50,6 +50,13 @@ Arcade coverage spans 1975 to ~2010, so demands vary enormously. Pick the matchi
 - ✅ **Steam Deck** — handles FBNeo, MAME, and Flycast/Naomi easily. Model 3 via Supermodel is tight at native res.
 - ✅ **Legion Go** — Model 2/3 and heavy Naomi work well.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+** — classic arcade golden age (CPS1, Neo Geo, Taito, Konami, most pre-1995) via FB Neo / MAME 2003-Plus. CPS3 + heavy Cave shmups marginal.
+- ✅ **Pi 4** — above plus MAME Current, CPS3, Cave. Light Naomi / Atomiswave via Flycast; Model 2/3 not supported.
+- ✅ **Pi 5** — above plus most Naomi. Model 2/3 still a no-go.
+- See [arcade-retro.md](../arcade-retro.md) — the Pi was practically designed for arcade emulation.
+
 ## ROM sets
 
 Arcade ROMs are **versioned sets** tied to a specific MAME/FBNeo release. Your ROM set version **must match** the emulator's version or games will refuse to boot with "ROM hashes invalid."

@@ -29,6 +29,11 @@
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+ / Pi 4 / Pi 5** — trivial; Stella runs everything including homebrew at full speed.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulator
 
 **Stella** — the definitive Atari 2600 emulator.

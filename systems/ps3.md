@@ -37,6 +37,11 @@ Decryption keys for your own disc games are derived automatically by RPCS3 durin
 - ⚠️ **Steam Deck** — playable for lighter PS3 titles (Demon's Souls runs, Ni no Kuni works); big AAA 3D struggles.
 - ⚠️ **Legion Go** — meaningfully better than Deck; AAA titles playable at 720p / 30 fps with tweaks, but still not guaranteed.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+ / Pi 4 / Pi 5** — not supported. RPCS3 is x86-64-only and the Pi's GPU class is far below what PS3 emulation requires.
+- See [arcade-retro.md](../arcade-retro.md) for Pi-realistic targets.
+
 ## Recommended emulator
 
 **RPCS3** — the only PS3 emulator worth using.

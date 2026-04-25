@@ -42,6 +42,13 @@
 - ✅ **Steam Deck** — most titles at 2–3× upscale and 60fps hacks; Monster Hunter 4 Ultimate + Pokémon X/Y are lighter. Kingdom Hearts 3D and Hyrule Warriors Legends are the most demanding.
 - ✅ **Legion Go** — 3–4× upscale with headroom.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+ / Pi 4** — no Citra/Azahar ARM build runs fast enough for playable 3DS on Pi.
+- ⚠️ **Pi 5** — Azahar/Lime3DS ARM builds play lighter 2D titles; 3D-heavy titles (Zelda: A Link Between Worlds, Kid Icarus Uprising) drop frames.
+- 3DS on Pi is the bleeding edge of what's possible; set expectations low.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator             | Status               | Notes                                                             |

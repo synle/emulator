@@ -38,6 +38,11 @@
 - ✅ **Steam Deck** (OLED/LCD, Van Gogh APU, 16 GB) — effortless.
 - ✅ **Legion Go** (Ryzen Z1 Extreme, 16 GB) — effortless.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+ / Pi 4 / Pi 5** — trivial at native res with shaders and 3–4 frames of run-ahead. FDS supported with `disksys.rom` in `/userdata/bios/`.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator    | Type                       | Notes                                         |

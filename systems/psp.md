@@ -32,6 +32,14 @@
 - ✅ **Steam Deck** — PPSSPP at 4× upscale + Vulkan is flawless.
 - ✅ **Legion Go** — same, plenty of headroom.
 
+**Raspberry Pi**
+
+- ⚠️ **Pi 3B+** — PPSSPP at 1× internal resolution. Demanding titles (God of War, Crisis Core) struggle.
+- ✅ **Pi 4** — PPSSPP at 2–3× upscale + Vulkan; most of the library smooth.
+- ✅ **Pi 5** — 4× upscale effortless.
+- No BIOS required.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulator
 
 **PPSSPP** — definitive PSP emulator. Available as libretro core and standalone. Standalone is preferred — it's actively developed with per-game settings, widescreen hacks, and texture packs.

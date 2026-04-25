@@ -39,6 +39,11 @@
 - ✅ **Steam Deck** — PCSX2 at 2× upscale is the sweet spot; heavier titles (GoW II, Black, SotC) need native resolution and game-specific hacks.
 - ✅ **Legion Go** — 3× upscale comfortable across most of the library.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+ / Pi 4 / Pi 5** — not realistic. PCSX2's JIT assumes x86-64 single-thread performance well above what any Pi offers. Use an x86 handheld or desktop instead.
+- See [arcade-retro.md](../arcade-retro.md) for what the Pi _can_ handle.
+
 ## Recommended emulator
 
 **PCSX2** — the only serious PS2 emulator. Available as libretro core (LRPS2) and standalone. **Always prefer standalone** — libretro lags upstream significantly.

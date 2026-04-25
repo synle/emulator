@@ -41,6 +41,14 @@ Legal source: dumped from your own PS1/PS2 using a softmod + tool like PS2 BIOS 
 - ✅ **Steam Deck** — DuckStation at 4–8× upscale + PGXP is flawless.
 - ✅ **Legion Go** — same, with headroom for high-res shaders.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+** — PCSX-ReARMed at native resolution. PGXP off.
+- ✅ **Pi 4** — DuckStation / SwanStation at 4× upscale with PGXP enabled.
+- ✅ **Pi 5** — 8× upscale + PGXP + high-quality texture filtering comfortable.
+- Put `scph5500.bin`, `scph5501.bin`, `scph5502.bin` in `/userdata/bios/`.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator        | Type                         | Notes                                                  |

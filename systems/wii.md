@@ -38,6 +38,14 @@
 - ✅ **Steam Deck** — 1.5–2× upscale, 60fps for most of the library. Use gyro for pointer aiming.
 - ✅ **Legion Go** — 3× upscale comfortable; detachable controller with gyro mimics a Wiimote.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+** — not enough CPU.
+- ⚠️ **Pi 4 (8 GB)** — community Dolphin forks run lighter titles (New Super Mario Bros Wii, Mario Party 8, WarioWare Smooth Moves). AAA 3D is marginal.
+- ⚠️ **Pi 5** — broader library including Super Mario Galaxy, Twilight Princess; Metroid Prime 3 and Xenoblade still challenging.
+- Use Bluetooth for Wiimote support; Pi 4/5's built-in BT chip pairs real Wiimotes natively.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulator
 
 **Dolphin** — same binary as GameCube. See also [gamecube.md](gamecube.md).

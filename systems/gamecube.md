@@ -40,6 +40,14 @@
 - ✅ **Steam Deck** — 1.5–2× upscale at 60fps for the vast majority of the library. A few heavy-hitters (F-Zero GX, Rogue Squadron III) need native res.
 - ✅ **Legion Go** — 3–4× upscale comfortably.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+** — not enough CPU for Dolphin's JIT.
+- ⚠️ **Pi 4 (8 GB)** — community Dolphin forks (e.g., `DolphinQt-aarch64`) run lighter 2D/3D titles at native res. AAA 3D struggles.
+- ⚠️ **Pi 5** — broader compatibility; still not full-speed on the most demanding titles (Rogue Squadron, F-Zero GX).
+- Expect to research per-title compatibility. Pi 5 is where GameCube on Pi becomes genuinely fun.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulator
 
 **Dolphin** — the only serious GameCube/Wii emulator. Available as libretro core and standalone. Always prefer **standalone Dolphin** on desktop; the libretro core lags upstream.

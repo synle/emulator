@@ -37,6 +37,11 @@
 - ⚠️ **Steam Deck** — many games playable with the FPS++ graphic pack (BOTW, MK8, Wind Waker HD); others hitch badly. Use native res.
 - ✅ **Legion Go** — comfortably handles the Cemu library at 1080p with FPS++.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+ / Pi 4 / Pi 5** — Cemu is x86-64-only and GPU-bound. No ARM port exists. Not a realistic target.
+- See [arcade-retro.md](../arcade-retro.md) for Pi-realistic targets.
+
 ## Recommended emulator
 
 **Cemu** — formerly Windows-only, now cross-platform since Cemu 2.x went open-source.

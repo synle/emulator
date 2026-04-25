@@ -42,6 +42,11 @@
 - ⚠️ **Steam Deck** — usable for most 2D and first-party 3D titles at 30fps; heavy hitters (TotK with mods, Bayonetta 3) require shader caches and patience.
 - ✅ **Legion Go** — notable upgrade; many AAA Switch titles run at 40–60fps at docked resolution.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+ / Pi 4 / Pi 5** — no Switch emulator fork runs acceptably on Pi hardware. Switch emulation needs desktop-class GPU + Vulkan 1.2+ + lots of RAM.
+- See [arcade-retro.md](../arcade-retro.md) for what the Pi _can_ realistically emulate.
+
 ## Recommended emulators
 
 | Emulator    | Status                 | Notes                                    |

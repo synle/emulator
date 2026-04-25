@@ -39,6 +39,14 @@
 - ✅ **Steam Deck** — Beetle Saturn runs the vast majority of the library at full speed. A handful of VDP2-heavy titles hitch.
 - ✅ **Legion Go** — full-speed across the library.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+** — not enough single-thread performance for Saturn's dual-CPU design.
+- ⚠️ **Pi 4** — YabaSanshiro or Kronos at native resolution playable for many titles; Virtua Fighter 2, Burning Rangers struggle.
+- ✅ **Pi 5** — Beetle Saturn runs the vast majority of the library at full speed.
+- `sega_101.bin` (JP) / `mpr-17933.bin` (US/EU) in `/userdata/bios/`.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator          | Type                       | Notes                                                   |

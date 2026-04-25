@@ -98,32 +98,76 @@ Each system doc explains how to get that console running on **Android, iOS, macO
 
 **BIOS key**: ✅ required · ⚪ optional · — none · **Specs key**: "(any)" = any modern device works; "(SD 8xx)" = Snapdragon 8 Gen X+ for Android; "(A12+)" = iOS chip. See each system doc for detail.
 
-| System                                     | BIOS             | Windows / macOS                  | Linux                | RetroArch core                 | Android                         | iOS                          |
-| ------------------------------------------ | ---------------- | -------------------------------- | -------------------- | ------------------------------ | ------------------------------- | ---------------------------- |
-| [NES](systems/nes.md)                      | — (FDS ⚪)       | Mesen, RA (any PC)               | Mesen, RA (any)      | ✅ Mesen / FCEUmm              | RA, Nostalgia.NES (any)         | RA, Delta (A9+)              |
-| [SNES](systems/snes.md)                    | — (SGB ⚪)       | bsnes, Snes9x, OpenEmu (any)     | Snes9x, bsnes (any)  | ✅ Snes9x / bsnes              | RA, Snes9x EX+ (any)            | Delta (A9+)                  |
-| [N64](systems/n64.md)                      | —                | simple64, Ares (i3+)             | simple64, Ares (i3+) | ✅ Mupen64Plus-Next / ParaLLEl | M64Plus FZ (SD 660+)            | RA (A12+)                    |
-| [GameCube](systems/gamecube.md)            | —                | Dolphin (i5-8/GTX 1050 Ti)       | Dolphin (same)       | ⚠️ Dolphin lr (old)            | Dolphin MMJR2 (SD 845+)         | Dolphin iOS (A13+)           |
-| [Wii](systems/wii.md)                      | — (WAD ⚪)       | Dolphin (same)                   | Dolphin              | ⚠️ Dolphin lr                  | Dolphin MMJR2 (SD 845+)         | Dolphin iOS (A13+)           |
-| [Wii U](systems/wiiu.md)                   | Keys ✅          | Cemu (i5-8/GTX 1060)             | Cemu (Flatpak)       | ❌                             | ❌ (experimental)               | ❌                           |
-| [Switch](systems/switch.md)                | Keys + FW ✅     | Ryubing / Suyu (i5-10/GTX 1650)  | same                 | ❌                             | Sudachi / Citron (SD 8 Gen 1+)  | ❌                           |
-| [GB / GBC](systems/gb.md)                  | ⚪               | SameBoy, mGBA, OpenEmu (any)     | SameBoy, mGBA (any)  | ✅ SameBoy / mGBA              | RA, My OldBoy! (any)            | Delta (any)                  |
-| [GBA](systems/gba.md)                      | ⚪               | mGBA, OpenEmu (any)              | mGBA (any)           | ✅ mGBA                        | My Boy!, RA (any)               | Delta (any)                  |
-| [NDS](systems/nds.md)                      | DSi ✅ / DS ⚪   | melonDS (i3+)                    | melonDS              | ✅ melonDS / DeSmuME           | DraStic, melonDS (SD 660+)      | Delta, RA (A11+)             |
-| [3DS](systems/3ds.md)                      | Keys ✅          | Azahar, Lime3DS (i5/GTX 1060)    | Azahar (same)        | ❌ (Citra lr is old)           | Azahar, Lime3DS (SD 855+)       | Folium (A12+)                |
-| [PS1](systems/ps1.md)                      | ✅               | DuckStation (any modern)         | DuckStation          | ✅ SwanStation / Beetle PSX    | DuckStation (SD 665+)           | RA, Delta, Provenance (A11+) |
-| [PS2](systems/ps2.md)                      | ✅               | PCSX2 (i5-8/GTX 1050 Ti)         | PCSX2 Flatpak        | ⚠️ LRPS2 (old)                 | AetherSX2 / NetherSX2 (SD 855+) | ❌                           |
-| [PS3](systems/ps3.md)                      | FW ✅            | RPCS3 (i5-10/GTX 1060)           | RPCS3                | ❌                             | ❌                              | ❌                           |
-| [PSP](systems/psp.md)                      | —                | PPSSPP (any)                     | PPSSPP (any)         | ✅ PPSSPP                      | PPSSPP (any)                    | PPSSPP, RA (A10+)            |
-| [PS Vita](systems/psvita.md)               | FW ✅            | Vita3K (i5-8 / Vulkan 1.2)       | Vita3K               | ❌                             | Vita3K (SD 8 Gen 1+)            | ❌                           |
-| [Master System / GG](systems/sms.md)       | ⚪               | OpenEmu, RA (any)                | RA (any)             | ✅ Genesis Plus GX             | RA (any)                        | RA, Provenance (any)         |
-| [Genesis / Mega Drive](systems/genesis.md) | CD ✅ / cart —   | RA, BlastEm (any)                | RA, BlastEm          | ✅ Genesis Plus GX / PicoDrive | RA, MD.emu (any)                | Delta (any)                  |
-| [Saturn](systems/saturn.md)                | ✅               | SSF (Win), Mednafen (i5-6+)      | Mednafen, RA (i5-6+) | ✅ Beetle Saturn / Kronos      | RA, YabaSanshiro (SD 888+)      | RA (A14+)                    |
-| [Dreamcast](systems/dreamcast.md)          | ✅               | Flycast, Redream (any modern)    | Flycast (Flatpak)    | ✅ Flycast                     | Flycast, Redream (SD 660+)      | RA Flycast (A11+)            |
-| [Arcade (MAME / FBNeo)](systems/arcade.md) | per-board ✅     | MAME, FBNeo (varies)             | MAME, FBNeo          | ✅ FBNeo / MAME                | RA, MAME4droid (any for 2D)     | MAME4iOS, RA (any for 2D)    |
-| [Neo Geo](systems/neogeo.md)               | ✅ `neogeo.zip`  | RA, MAME (any)                   | RA, MAME             | ✅ FB Neo / NeoCD              | RA (any)                        | RA (any)                     |
-| [PC Engine / TG-16](systems/pcengine.md)   | CD ✅ / HuCard — | Ootake (Win), Mednafen, RA (any) | RA, Mednafen         | ✅ Beetle PCE                  | RA (any)                        | RA (any)                     |
-| [Atari 2600](systems/atari2600.md)         | —                | Stella, OpenEmu (any)            | Stella, RA (any)     | ✅ Stella                      | RA, 2600.emu (any)              | RA, Provenance (any)         |
+| System                                     | BIOS             | Windows / macOS                  | Linux                | RetroArch core                 | Android                         | iOS                          | Raspberry Pi           |
+| ------------------------------------------ | ---------------- | -------------------------------- | -------------------- | ------------------------------ | ------------------------------- | ---------------------------- | ---------------------- |
+| [NES](systems/nes.md)                      | — (FDS ⚪)       | Mesen, RA (any PC)               | Mesen, RA (any)      | ✅ Mesen / FCEUmm              | RA, Nostalgia.NES (any)         | RA, Delta (A9+)              | Pi 3+ ✅               |
+| [SNES](systems/snes.md)                    | — (SGB ⚪)       | bsnes, Snes9x, OpenEmu (any)     | Snes9x, bsnes (any)  | ✅ Snes9x / bsnes              | RA, Snes9x EX+ (any)            | Delta (A9+)                  | Pi 3+ ✅               |
+| [N64](systems/n64.md)                      | —                | simple64, Ares (i3+)             | simple64, Ares (i3+) | ✅ Mupen64Plus-Next / ParaLLEl | M64Plus FZ (SD 660+)            | RA (A12+)                    | Pi 3 ⚠️ / Pi 4+ ✅     |
+| [GameCube](systems/gamecube.md)            | —                | Dolphin (i5-8/GTX 1050 Ti)       | Dolphin (same)       | ⚠️ Dolphin lr (old)            | Dolphin MMJR2 (SD 845+)         | Dolphin iOS (A13+)           | Pi 4+ ⚠️               |
+| [Wii](systems/wii.md)                      | — (WAD ⚪)       | Dolphin (same)                   | Dolphin              | ⚠️ Dolphin lr                  | Dolphin MMJR2 (SD 845+)         | Dolphin iOS (A13+)           | Pi 4+ ⚠️               |
+| [Wii U](systems/wiiu.md)                   | Keys ✅          | Cemu (i5-8/GTX 1060)             | Cemu (Flatpak)       | ❌                             | ❌ (experimental)               | ❌                           | ❌                     |
+| [Switch](systems/switch.md)                | Keys + FW ✅     | Ryubing / Suyu (i5-10/GTX 1650)  | same                 | ❌                             | Sudachi / Citron (SD 8 Gen 1+)  | ❌                           | ❌                     |
+| [GB / GBC](systems/gb.md)                  | ⚪               | SameBoy, mGBA, OpenEmu (any)     | SameBoy, mGBA (any)  | ✅ SameBoy / mGBA              | RA, My OldBoy! (any)            | Delta (any)                  | Pi 3+ ✅               |
+| [GBA](systems/gba.md)                      | ⚪               | mGBA, OpenEmu (any)              | mGBA (any)           | ✅ mGBA                        | My Boy!, RA (any)               | Delta (any)                  | Pi 3+ ✅               |
+| [NDS](systems/nds.md)                      | DSi ✅ / DS ⚪   | melonDS (i3+)                    | melonDS              | ✅ melonDS / DeSmuME           | DraStic, melonDS (SD 660+)      | Delta, RA (A11+)             | Pi 3 ⚠️ / Pi 4+ ✅     |
+| [3DS](systems/3ds.md)                      | Keys ✅          | Azahar, Lime3DS (i5/GTX 1060)    | Azahar (same)        | ❌ (Citra lr is old)           | Azahar, Lime3DS (SD 855+)       | Folium (A12+)                | Pi 5 ⚠️ only           |
+| [PS1](systems/ps1.md)                      | ✅               | DuckStation (any modern)         | DuckStation          | ✅ SwanStation / Beetle PSX    | DuckStation (SD 665+)           | RA, Delta, Provenance (A11+) | Pi 3+ ✅               |
+| [PS2](systems/ps2.md)                      | ✅               | PCSX2 (i5-8/GTX 1050 Ti)         | PCSX2 Flatpak        | ⚠️ LRPS2 (old)                 | AetherSX2 / NetherSX2 (SD 855+) | ❌                           | ❌                     |
+| [PS3](systems/ps3.md)                      | FW ✅            | RPCS3 (i5-10/GTX 1060)           | RPCS3                | ❌                             | ❌                              | ❌                           | ❌                     |
+| [PSP](systems/psp.md)                      | —                | PPSSPP (any)                     | PPSSPP (any)         | ✅ PPSSPP                      | PPSSPP (any)                    | PPSSPP, RA (A10+)            | Pi 3 ⚠️ / Pi 4+ ✅     |
+| [PS Vita](systems/psvita.md)               | FW ✅            | Vita3K (i5-8 / Vulkan 1.2)       | Vita3K               | ❌                             | Vita3K (SD 8 Gen 1+)            | ❌                           | ❌                     |
+| [Master System / GG](systems/sms.md)       | ⚪               | OpenEmu, RA (any)                | RA (any)             | ✅ Genesis Plus GX             | RA (any)                        | RA, Provenance (any)         | Pi 3+ ✅               |
+| [Genesis / Mega Drive](systems/genesis.md) | CD ✅ / cart —   | RA, BlastEm (any)                | RA, BlastEm          | ✅ Genesis Plus GX / PicoDrive | RA, MD.emu (any)                | Delta (any)                  | Pi 3+ ✅               |
+| [Saturn](systems/saturn.md)                | ✅               | SSF (Win), Mednafen (i5-6+)      | Mednafen, RA (i5-6+) | ✅ Beetle Saturn / Kronos      | RA, YabaSanshiro (SD 888+)      | RA (A14+)                    | Pi 4 ⚠️ / Pi 5 ✅      |
+| [Dreamcast](systems/dreamcast.md)          | ✅               | Flycast, Redream (any modern)    | Flycast (Flatpak)    | ✅ Flycast                     | Flycast, Redream (SD 660+)      | RA Flycast (A11+)            | Pi 3 ⚠️ / Pi 4+ ✅     |
+| [Arcade (MAME / FBNeo)](systems/arcade.md) | per-board ✅     | MAME, FBNeo (varies)             | MAME, FBNeo          | ✅ FBNeo / MAME                | RA, MAME4droid (any for 2D)     | MAME4iOS, RA (any for 2D)    | Pi 3+ ✅ (classic era) |
+| [Neo Geo](systems/neogeo.md)               | ✅ `neogeo.zip`  | RA, MAME (any)                   | RA, MAME             | ✅ FB Neo / NeoCD              | RA (any)                        | RA (any)                     | Pi 3+ ✅               |
+| [PC Engine / TG-16](systems/pcengine.md)   | CD ✅ / HuCard — | Ootake (Win), Mednafen, RA (any) | RA, Mednafen         | ✅ Beetle PCE                  | RA (any)                        | RA (any)                     | Pi 3+ ✅               |
+| [Atari 2600](systems/atari2600.md)         | —                | Stella, OpenEmu (any)            | Stella, RA (any)     | ✅ Stella                      | RA, 2600.emu (any)              | RA, Provenance (any)         | Pi 3+ ✅               |
+
+### ROM / disc format quick reference
+
+What file extensions each system's emulators actually load, and on which OSes. When multiple extensions are listed, you can use any of them — but some are more universally supported than others (noted). When in doubt, `.chd` for discs and `.zip` for cartridges are the safest cross-emulator picks.
+
+| System                    | OS                                | Emulator                                | ROM extensions                                                                    |
+| ------------------------- | --------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------- |
+| NES / Famicom             | All                               | RetroArch + Mesen / FCEUmm              | `.nes`, `.fds`, `.unf`, `.unif`, `.zip`                                           |
+| SNES / Super Famicom      | All                               | RetroArch + Snes9x / bsnes              | `.sfc`, `.smc`, `.swc`, `.fig`, `.zip`                                            |
+| N64                       | All                               | Mupen64Plus-Next, ParaLLEl N64          | `.z64` (preferred), `.n64`, `.v64`, `.zip`                                        |
+| GameCube                  | Win/macOS/Linux/Android/iOS/Pi    | Dolphin                                 | `.rvz` (preferred), `.iso`, `.gcm`, `.ciso`, `.gcz`                               |
+| Wii                       | Win/macOS/Linux/Android/iOS/Pi    | Dolphin                                 | `.rvz` (preferred), `.iso`, `.wbfs`, `.wad`                                       |
+| Wii U                     | Win/macOS/Linux                   | Cemu                                    | `.wua` (preferred), `.wud`, `.wux`, loadable folder (`code/content/meta`)         |
+| Switch                    | Win/macOS/Linux/Android           | Ryubing / Suyu / Sudachi / Citron       | `.nsp`, `.xci`, `.nca`, `.nsz`, `.xcz`                                            |
+| Game Boy / GBC            | All                               | RetroArch + SameBoy / mGBA              | `.gb`, `.gbc`, `.zip`                                                             |
+| Game Boy Advance          | All                               | RetroArch + mGBA, My Boy!, Delta        | `.gba`, `.zip`                                                                    |
+| Nintendo DS / DSi         | All                               | melonDS, DraStic                        | `.nds`, `.dsi`, `.zip`                                                            |
+| Nintendo 3DS              | Win/macOS/Linux/Android/iOS/Pi 5  | Azahar / Lime3DS                        | `.3ds`, `.cia`, `.cxi`, `.cci`                                                    |
+| PlayStation 1             | All                               | DuckStation, SwanStation, Beetle PSX    | `.chd` (preferred), `.cue`+`.bin`, `.pbp`, `.ecm`, `.m3u` (multi-disc)            |
+| PlayStation 2             | Win/macOS/Linux/Android           | PCSX2, AetherSX2 / NetherSX2            | `.chd` (preferred), `.iso`, `.bin`+`.cue`, `.mdf`/`.mds`, `.zso`, `.cso`          |
+| PlayStation 3             | Win/macOS/Linux                   | RPCS3                                   | Decrypted folder dumps (`PS3_GAME/`), `.pkg`                                      |
+| PSP                       | All                               | PPSSPP                                  | `.iso`, `.cso` (preferred for size), `.chd`, `.pbp`                               |
+| PS Vita                   | Win/macOS/Linux/Android           | Vita3K                                  | `.vpk` (installer), decrypted `ux0:app/<TITLE_ID>/` folder                        |
+| Master System / Game Gear | All                               | RetroArch + Genesis Plus GX             | `.sms`, `.gg`, `.zip`                                                             |
+| Genesis / Mega Drive      | All                               | RetroArch + Genesis Plus GX / PicoDrive | `.md`, `.gen`, `.smd`, `.bin`, `.zip`                                             |
+| Sega CD                   | All                               | Genesis Plus GX                         | `.chd` (preferred), `.cue`+`.bin`, `.m3u`                                         |
+| 32X                       | All                               | PicoDrive                               | `.32x`, `.bin`, `.zip`                                                            |
+| Saturn                    | Win/macOS/Linux/Android/iOS/Pi 4+ | Beetle Saturn, Kronos, YabaSanshiro     | `.chd` (preferred), `.cue`+`.bin`, `.ccd`+`.img`+`.sub`                           |
+| Dreamcast                 | All                               | Flycast, Redream                        | `.chd` (preferred), `.gdi`, `.cdi`, `.m3u`                                        |
+| Arcade (MAME / FBNeo)     | All                               | RetroArch + FB Neo / MAME               | `.zip` (set version must match core version); `.chd` for disc-based arcade titles |
+| Neo Geo AES / MVS         | All                               | RetroArch + FB Neo                      | `.zip` (with `neogeo.zip` / UniBIOS alongside)                                    |
+| Neo Geo CD                | All                               | NeoCD                                   | `.chd` (preferred), `.cue`+`.bin`                                                 |
+| PC Engine / TurboGrafx-16 | All                               | RetroArch + Beetle PCE                  | `.pce`, `.sgx` (SuperGrafx), `.zip`                                               |
+| PC Engine CD              | All                               | Beetle PCE                              | `.chd` (preferred), `.cue`+`.bin`                                                 |
+| Atari 2600                | All                               | Stella                                  | `.a26`, `.bin`, `.zip`                                                            |
+
+**Format notes:**
+
+- `.chd` (Compressed Hunks of Data) = MAME's lossless compressed format. Supported by virtually every modern disc-era emulator and saves 30–60% disk space. See [apps/management/disc-tools.md](apps/management/disc-tools.md) for conversion commands.
+- `.rvz` = Dolphin's lossless compressed format for GC/Wii.
+- `.zip` = most cartridge-based cores auto-extract zips; no need to decompress first.
+- `.m3u` = playlist file referencing multi-disc sets; prevents juggling discs in the emulator UI.
+- `.cso` / `.zso` = lossy-but-usually-fine compressed ISOs; prefer `.chd` when both are supported.
+- Arcade `.zip` set versions **must match** the core version — a MAME 0.265 set won't boot in MAME 0.262 and vice versa. See [systems/arcade.md](systems/arcade.md).
 
 ### Performance tiers (quick legend)
 

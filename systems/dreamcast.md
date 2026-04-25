@@ -39,6 +39,14 @@
 - ✅ **Steam Deck** — Flycast at 4× upscale + widescreen is flawless.
 - ✅ **Legion Go** — same, 6–8× upscale comfortable.
 
+**Raspberry Pi**
+
+- ⚠️ **Pi 3B+** — Flycast at native res; light titles (2D fighters, Sonic Adventure) OK; heavier 3D (Crazy Taxi, Shenmue) drops frames.
+- ✅ **Pi 4** — Flycast at 2× upscale, widescreen enabled, most library smooth.
+- ✅ **Pi 5** — 4× upscale + widescreen + 60fps hacks comfortable. Naomi arcade also works.
+- `dc/dc_boot.bin` and `dc/dc_flash.bin` in `/userdata/bios/`.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator    | Type                       | Notes                                             |

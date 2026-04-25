@@ -38,6 +38,11 @@
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+ / Pi 4 / Pi 5** — trivial for HuCard, CD, and SuperGrafx. Put `syscard3.pce` in `/userdata/bios/` for CD games.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator                         | Type                 | Notes                              |

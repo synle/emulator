@@ -39,6 +39,11 @@
 - ⚠️ **Steam Deck** — playable for a growing subset of the library; expect to consult the Vita3K compatibility list title-by-title.
 - ✅ **Legion Go** — noticeably more headroom than the Deck for Vita.
 
+**Raspberry Pi**
+
+- ❌ **Pi 3B+ / Pi 4 / Pi 5** — Vita3K is effectively x86-focused and GPU-heavy; no playable ARM Pi build as of 2026.
+- See [arcade-retro.md](../arcade-retro.md) for Pi-realistic targets.
+
 ## Recommended emulator
 
 **Vita3K** — the only PS Vita emulator. Still labeled "experimental" but has grown quickly.

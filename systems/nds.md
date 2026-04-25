@@ -41,6 +41,14 @@
 - ✅ **Steam Deck** — melonDS at high upscale, trackpad as stylus.
 - ✅ **Legion Go** — comfortable; its touchscreen is well-suited for DS games.
 
+**Raspberry Pi**
+
+- ⚠️ **Pi 3B+** — DeSmuME at native; struggles on 3D-heavy titles (Mario Kart DS, Metroid Prime Hunters).
+- ✅ **Pi 4** — melonDS smooth; dual-screen layouts including hybrid work well.
+- ✅ **Pi 5** — melonDS at 2× upscale comfortable.
+- Controls: use a touchscreen Pi hat for stylus games, or map the right analog stick as stylus.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator    | Type                       | Notes                                               |

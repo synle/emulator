@@ -38,6 +38,11 @@
 - ✅ **Steam Deck** — trivial.
 - ✅ **Legion Go** — trivial.
 
+**Raspberry Pi**
+
+- ✅ **Pi 3B+ / Pi 4 / Pi 5** — trivial for AES/MVS cartridges and Neo Geo CD. Drop `neogeo.zip` (UniBIOS is recommended) alongside ROMs; CD BIOS in `/userdata/bios/`.
+- See [arcade-retro.md](../arcade-retro.md) for the full Pi build guide.
+
 ## Recommended emulators
 
 | Emulator   | Type                       | Notes                                         |
