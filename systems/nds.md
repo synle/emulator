@@ -4,6 +4,39 @@
 - ROM extensions: `.nds`, `.dsi`
 - BIOS required: **optional for DS**, **required for DSi** (`bios7.bin`, `bios9.bin`, `firmware.bin`; DSi needs `dsi_bios7.bin`, `dsi_bios9.bin`, `dsi_firmware.bin`, `dsi_nand.bin`)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — original Nintendo DS boot ROMs for each CPU (ARM7 and ARM9). Optional on melonDS (HLE boot is good), **required** for DSi mode.
+- **Firmware** — the DS's configuration/settings data (`firmware.bin`).
+- **DSi BIOS + NAND** — required for DSi games; must be dumped from a real DSi.
+
+| File | For | Required? |
+|---|---|---|
+| `bios7.bin` | DS ARM7 | Optional (melonDS), recommended |
+| `bios9.bin` | DS ARM9 | Optional, recommended |
+| `firmware.bin` | DS settings / Pictochat | Optional, recommended |
+| `dsi_bios7.bin`, `dsi_bios9.bin` | DSi ARM7/ARM9 | Required for DSi mode |
+| `dsi_firmware.bin`, `dsi_nand.bin` | DSi firmware + flash | Required for DSi mode |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: 2012-era dual-core + integrated GPU, 4 GB RAM.
+- Recommended: any modern CPU for upscaling.
+
+**Android**
+- Minimum: Snapdragon 660 / Dimensity 800, 4 GB RAM.
+- ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — DraStic / melonDS at high resolution, silky.
+
+**iOS / iPadOS**
+- ✅ **iPad Pro 12.9" M1** — melonDS handles everything.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — melonDS at high upscale, trackpad as stylus.
+- ✅ **Legion Go** — comfortable; its touchscreen is well-suited for DS games.
+
 ## Recommended emulators
 
 | Emulator | Type | Notes |

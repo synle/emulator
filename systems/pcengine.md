@@ -6,6 +6,34 @@
   - HuCard: **no**
   - CD / Super CD-ROM²: **yes** — `syscard3.pce` (Super CD), `syscard1.pce` / `syscard2.pce` (older), `gexpress.pce` (Games Express variant)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — boot ROM. HuCard (cartridge) games don't need one.
+- **System Card** — required to boot CD-ROM² and Super CD-ROM² discs. The System Card is the physical card/firmware the real PC Engine CD attachment required; modern cores need a dump of its ROM.
+
+| File | For | Required? |
+|---|---|---|
+| `syscard3.pce` | Super CD-ROM² (recommended; plays all CD games) | Required for CD |
+| `syscard1.pce` / `syscard2.pce` | Early CD-ROM² games | Legacy |
+| `gexpress.pce` | Games Express (unlicensed) | Optional |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Any hardware. 2 GB RAM.
+
+**Android**
+- ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial.
+
+**iOS / iPadOS**
+- ✅ **iPad Pro 12.9" M1** — trivial.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — trivial.
+- ✅ **Legion Go** — trivial.
+
 ## Recommended emulators
 
 | Emulator | Type | Notes |

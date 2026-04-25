@@ -10,6 +10,42 @@ Arcade emulation is split across several frameworks that target different hardwa
 | **Model 2 Emulator** | Sega Model 2 (Virtua Fighter 2, Daytona USA) | Windows standalone |
 | **Supermodel** | Sega Model 3 (Scud Race, Virtua Fighter 3) | Windows/Linux |
 
+## Prerequisites
+
+### Firmware / BIOS
+
+Arcade boards almost all have on-board BIOS firmware that must be loaded alongside the game ROMs.
+
+- **Board BIOS** — ROM image of the chip on the arcade PCB. Lives in the same folder as game zips, usually named after the board.
+- **ROM set version** — every ROM set is tied to a specific MAME release (e.g., MAME 0.265). A game zip from one version may fail hash checks in another.
+
+| File | For | Required? |
+|---|---|---|
+| `neogeo.zip` | Neo Geo MVS/AES | Required |
+| `cps2_bios.zip` / `cps3_bios.zip` | CPS2 / CPS3 (Street Fighter III) | Required |
+| `naomi.zip`, `awbios.zip` | Sega Naomi / Atomiswave | Required for those |
+| `decocass.zip`, `pgm.zip`, `skns.zip`, etc. | Board-specific | Required per board |
+
+### System requirements
+
+Arcade coverage spans 1975 to ~2010, so demands vary enormously. Pick the matching core.
+
+**Desktop (Windows / macOS / Linux)**
+- Old arcade (pre-1995, CPS1/2, Neo Geo, most shmups): any hardware.
+- Modern 3D arcade (Naomi, Model 2, Model 3): modern i5 / Ryzen 5 + GTX 1060-class.
+
+**Android**
+- 2D arcade (CPS/Neo Geo/Cave/Taito): ✅ all of your devices handle full speed.
+- Model 2 / Naomi: ⚠️ S24 Ultra / Z Fold 5 / Tab S9 Ultra can run most titles with Flycast for Naomi; Model 2/3 not supported on mobile.
+
+**iOS / iPadOS**
+- 2D arcade: ✅ **iPad Pro 12.9" M1** — trivial.
+- Naomi on Flycast iOS: ✅ works at full speed.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — handles FBNeo, MAME, and Flycast/Naomi easily. Model 3 via Supermodel is tight at native res.
+- ✅ **Legion Go** — Model 2/3 and heavy Naomi work well.
+
 ## ROM sets
 
 Arcade ROMs are **versioned sets** tied to a specific MAME/FBNeo release. Your ROM set version **must match** the emulator's version or games will refuse to boot with "ROM hashes invalid."

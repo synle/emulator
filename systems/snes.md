@@ -4,6 +4,37 @@
 - Common ROM extensions: `.sfc`, `.smc`, `.swc`, `.fig`
 - BIOS required: **no** (some Satellaview games need `BS-X.bin`; Sufami Turbo needs `STBIOS.bin`)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — a copy of the console's boot ROM. SNES doesn't need one for stock cartridges.
+- **SGB BIOS** (Super Game Boy) — optional; required only if you want to play Game Boy games through the Super Game Boy adapter, which adds borders and SNES-enhanced audio.
+- **BS-X BIOS / Sufami Turbo BIOS** — optional; for obscure Japanese-only peripherals.
+
+| File | For | Required? |
+|---|---|---|
+| `sgb.boot.rom` + `sgb1.sfc`/`sgb2.sfc` | Super Game Boy via bsnes | Optional |
+| `BS-X.bin` | Satellaview titles | Optional |
+| `STBIOS.bin` | Sufami Turbo | Optional |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: any CPU, integrated GPU, 2 GB RAM.
+- Only bsnes-mercury-accuracy or standalone bsnes at high run-ahead benefits from a modern CPU (Intel i3 / Ryzen 3 and up).
+
+**Android**
+- Minimum: Snapdragon 400-class, 2 GB RAM.
+- ✅ **Galaxy S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial; bsnes run-ahead works smoothly.
+
+**iOS / iPadOS**
+- ✅ **iPad Pro 12.9" M1** — trivial at any upscale/run-ahead.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** (Van Gogh APU, 16 GB) — effortless, even cycle-accurate bsnes.
+- ✅ **Legion Go** (Ryzen Z1 Extreme, 16 GB) — effortless.
+
 ## Recommended emulators
 
 | Emulator | Type | Notes |

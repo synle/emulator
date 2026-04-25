@@ -4,6 +4,37 @@
 - Disc formats: `.iso`, `.chd` (now supported by PCSX2), `.bin`+`.cue`, `.mdf`/`.mds`, `.zso`, `.cso`
 - BIOS required: **yes** — `ps2-0230a-20080220.bin` or similar (dump from your own console)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — **required**. The PS2's boot ROM; hundreds of revisions exist. Dump from your own PS2 using FreeMcBoot + a BIOS dumper homebrew.
+
+| File | For | Required? |
+|---|---|---|
+| `ps2-*.bin` (e.g., `SCPH-70012.bin`) | PCSX2 boot | Yes |
+| `rom1.bin`, `rom2.bin`, `erom.bin` (optional companions) | Some cores expect them alongside the main BIOS | Recommended |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: Intel i5 8th gen / Ryzen 5 2600, GTX 1050 Ti, 8 GB RAM.
+- Recommended: i5 12400 / Ryzen 5 5600 + RX 6600 / RTX 3060 for 2× upscaling at full speed in demanding titles (Shadow of the Colossus, Black).
+- **macOS Apple Silicon**: M1 good, M1 Pro / M2 great, M3/M4 ideal.
+
+**Android**
+- Minimum: Snapdragon 855, 6 GB RAM. AetherSX2 / NetherSX2 only.
+- ✅ **S24 Ultra** (SD 8 Gen 3) — excellent; runs almost everything at 2× upscale 60fps.
+- ✅ **Z Fold 5** (SD 8 Gen 2) — very good, 1.5–2× upscale comfortable.
+- ✅ **Tab S9 Ultra** (SD 8 Gen 2) — same class as Fold 5, bigger screen.
+
+**iOS / iPadOS**
+- ❌ **Not officially supported** on any iOS device as of 2026. Your **iPad Pro M1** hardware is capable but no stable emulator exists.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — PCSX2 at 2× upscale is the sweet spot; heavier titles (GoW II, Black, SotC) need native resolution and game-specific hacks.
+- ✅ **Legion Go** — 3× upscale comfortable across most of the library.
+
 ## Recommended emulator
 
 **PCSX2** — the only serious PS2 emulator. Available as libretro core (LRPS2) and standalone. **Always prefer standalone** — libretro lags upstream significantly.

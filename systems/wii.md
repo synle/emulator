@@ -4,6 +4,36 @@
 - Common disc image formats: `.iso`, `.wbfs`, `.rvz` (preferred), `.wad` (WiiWare / Virtual Console)
 - BIOS required: **no**; Wii Menu (`.wad` of system menu) optional
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — not required. Dolphin HLE-boots Wii games.
+- **Wii System Menu WAD** — optional; installs the real Wii Menu from a dumped `.wad`.
+- **Common key** — needed only to install WAD files (for WiiWare / Virtual Console); baked into Dolphin.
+
+| File | For | Required? |
+|---|---|---|
+| `RVL-WiiSystemmenu-v*.wad` | Authentic Wii Menu | Optional |
+| WiiWare `.wad` files | Individual VC/WiiWare titles | Yes if you want these |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: Intel i5 4th gen / Ryzen 3, GTX 750 Ti or Vega 8 iGPU, 8 GB RAM.
+- Recommended: i5 / Ryzen 5 + GTX 1060 / RX 580 for 3× upscale at stable 60 fps.
+
+**Android**
+- Minimum: Snapdragon 855, 6 GB RAM.
+- ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — full-speed 2× upscale; motion-sensitive games use the phone/tablet gyroscope as a Wiimote.
+
+**iOS / iPadOS**
+- ✅ **iPad Pro 12.9" M1** — official Dolphin iOS handles Wii at 2–3× upscale.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — 1.5–2× upscale, 60fps for most of the library. Use gyro for pointer aiming.
+- ✅ **Legion Go** — 3× upscale comfortable; detachable controller with gyro mimics a Wiimote.
+
 ## Recommended emulator
 
 **Dolphin** — same binary as GameCube. See also [gamecube.md](gamecube.md).

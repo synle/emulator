@@ -4,6 +4,30 @@
 - Game formats: `.iso`, `.cso` (compressed ISO, preferred), `.chd`, `.pbp` (EBOOT)
 - BIOS required: **no**
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — not required. PPSSPP includes a HLE (high-level emulation) implementation.
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: 2012-era dual-core + integrated GPU, 4 GB RAM.
+- Recommended: any modern CPU + any discrete/integrated GPU for 4× upscale (1440p).
+
+**Android**
+- Minimum: Snapdragon 625 / MediaTek Helio P60, 3 GB RAM. Very forgiving.
+- ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — 5× upscale + Vulkan + texture filtering, pure smoothness. One of the best emulation experiences on mobile.
+
+**iOS / iPadOS**
+- Minimum: A10 Fusion.
+- ✅ **iPad Pro 12.9" M1** — 5× upscale effortless.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — PPSSPP at 4× upscale + Vulkan is flawless.
+- ✅ **Legion Go** — same, plenty of headroom.
+
 ## Recommended emulator
 
 **PPSSPP** — definitive PSP emulator. Available as libretro core and standalone. Standalone is preferred — it's actively developed with per-game settings, widescreen hacks, and texture packs.

@@ -4,6 +4,35 @@
 - Game formats: decrypted folder dumps (`PS3_GAME/` tree), `.pkg` files (PSN), `.iso` (not supported; convert to folder first)
 - BIOS required: **yes** — `PS3UPDAT.PUP` firmware installed via RPCS3
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **Firmware** — `PS3UPDAT.PUP`. **Required**. Download legally from Sony's support site. Installed into RPCS3 via `File → Install Firmware`; extracts into `dev_flash/`.
+
+| File | For | Required? |
+|---|---|---|
+| `PS3UPDAT.PUP` | RPCS3 firmware | Yes |
+
+Decryption keys for your own disc games are derived automatically by RPCS3 during install, using a license file (`.rap`) dumped from a real PSN account.
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: Intel i5 10th gen / Ryzen 5 3600, GTX 1060, 16 GB RAM, Vulkan 1.2+.
+- Recommended: Ryzen 7 5800X / i7 12700 + RTX 3060 / RX 6700 XT for AAA titles (GoW III, The Last of Us, GTA V).
+- **macOS Apple Silicon**: M1 OK for 2D/indie; M2 Pro / M3 Max for 3D.
+
+**Android**
+- ❌ **Not supported.** PS3 is far too demanding for mobile SoCs.
+
+**iOS / iPadOS**
+- ❌ **Not supported.**
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ⚠️ **Steam Deck** — playable for lighter PS3 titles (Demon's Souls runs, Ni no Kuni works); big AAA 3D struggles.
+- ⚠️ **Legion Go** — meaningfully better than Deck; AAA titles playable at 720p / 30 fps with tweaks, but still not guaranteed.
+
 ## Recommended emulator
 
 **RPCS3** — the only PS3 emulator worth using.

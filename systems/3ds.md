@@ -4,6 +4,40 @@
 - ROM extensions: `.3ds`, `.cia`, `.cxi`, `.cci`
 - BIOS required: **no** (system archives dumped from your own 3DS improve compatibility)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — not required.
+- **System archives** — optional; dumped from your own 3DS with GodMode9. They replace HLE versions of the Mii Maker, shared fonts, and Home Menu apps, improving compatibility for games that reach into those.
+- **aes_keys.txt** — AES key file dumped from your 3DS, needed to decrypt encrypted CIA/3DS ROMs. Some forks ship built-in keys; most require your own.
+
+| File | For | Required? |
+|---|---|---|
+| `aes_keys.txt` | Decrypting `.cia` / encrypted `.3ds` | Often required |
+| System archives (from your 3DS NAND) | Improved compatibility | Optional |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: Intel i5 4th gen / Ryzen 3, Vulkan 1.1 GPU, 8 GB RAM.
+- Recommended: i5 / Ryzen 5 + GTX 1060 / RX 580.
+
+**Android**
+- Minimum: Snapdragon 855 with Vulkan 1.1+, 6 GB RAM.
+- ✅ **S24 Ultra** (SD 8 Gen 3) — near-perfect, 2× upscale + 60fps hacks work well.
+- ✅ **Z Fold 5** (SD 8 Gen 2) — plays almost everything well; the larger folded screen is great for DS-style dual-screen layout.
+- ✅ **Tab S9 Ultra** — excellent; best of your three devices for 3DS.
+- Use **Azahar** or **Lime3DS**.
+
+**iOS / iPadOS**
+- Minimum: A12 (iPhone XS / iPad mini 5) with Metal 2.
+- ✅ **iPad Pro 12.9" M1** — via Folium, 2–3× upscale comfortable.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — most titles at 2–3× upscale and 60fps hacks; Monster Hunter 4 Ultimate + Pokémon X/Y are lighter. Kingdom Hearts 3D and Hyrule Warriors Legends are the most demanding.
+- ✅ **Legion Go** — 3–4× upscale with headroom.
+
 ## Recommended emulators
 
 | Emulator | Status | Notes |

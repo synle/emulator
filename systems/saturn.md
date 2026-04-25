@@ -4,6 +4,37 @@
 - Disc formats: `.cue`+`.bin`, `.chd`, `.ccd`+`.img`+`.sub`
 - BIOS required: **yes** — `sega_101.bin` (JP), `mpr-17933.bin` (US/EU), `mpr-18811-mx.ic1` & `mpr-19367-mx.ic1` (Saturn Video CD card)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — **required**. Saturn boot ROM, one per region.
+- **Video CD card BIOS** — separate firmware for the Video CD expansion card; optional, only for VCD playback.
+
+| File | For | Required? |
+|---|---|---|
+| `sega_101.bin` | JP Saturn | Required for JP discs |
+| `mpr-17933.bin` | US/EU Saturn | Required for US/EU discs |
+| `mpr-18811-mx.ic1`, `mpr-19367-mx.ic1` | Video CD card | Optional |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Minimum: Intel i5 6th gen / Ryzen 5 1600, 8 GB RAM (Saturn is CPU-heavy, not GPU-heavy).
+- Recommended: modern i5 / Ryzen 5 for reliable full speed. Single-threaded performance matters more than GPU.
+
+**Android**
+- Minimum: Snapdragon 888, 8 GB RAM. Saturn is the **hardest** sub-6th-gen console for ARM chips.
+- ⚠️ **S24 Ultra** (SD 8 Gen 3) — playable for most games via Beetle Saturn; the toughest titles (Virtua Fighter 2, Burning Rangers) still drop frames occasionally.
+- ⚠️ **Z Fold 5 / Tab S9 Ultra** (SD 8 Gen 2) — marginal; favor YabaSanshiro over Beetle Saturn. Expect compromises.
+
+**iOS / iPadOS**
+- ⚠️ **iPad Pro 12.9" M1** — Beetle Saturn works but is not full-speed on every title; M2/M4 iPads do better.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — Beetle Saturn runs the vast majority of the library at full speed. A handful of VDP2-heavy titles hitch.
+- ✅ **Legion Go** — full-speed across the library.
+
 ## Recommended emulators
 
 | Emulator | Type | Notes |

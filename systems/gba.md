@@ -4,6 +4,33 @@
 - ROM extensions: `.gba`, `.zip` (bundled)
 - BIOS required: **optional** but recommended — `gba_bios.bin` (SHA-1 `300c20df6731a33952ded8c436f7f186d25d3492`)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **GBA BIOS** — the system boot ROM. Optional but **strongly recommended**: a few games (e.g., the Pokémon Mystery Dungeon intro, Golden Sun link trades, Mario & Luigi) rely on BIOS calls and misbehave without it.
+
+| File | SHA-1 | Required? |
+|---|---|---|
+| `gba_bios.bin` | `300c20df6731a33952ded8c436f7f186d25d3492` | Recommended |
+
+Legal source: dumped from your own GBA via a homebrew tool like GBA Backup Tool or by compiling the open-source reimplementation.
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Any hardware from the last 15 years. 2 GB RAM.
+
+**Android**
+- ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial; high-quality upscaling shaders included.
+
+**iOS / iPadOS**
+- ✅ **iPad Pro 12.9" M1** — trivial.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — trivial.
+- ✅ **Legion Go** — trivial.
+
 ## Recommended emulators
 
 | Emulator | Type | Notes |

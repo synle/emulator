@@ -4,6 +4,31 @@
 - ROM extensions: `.sms`, `.gg`
 - BIOS required: **no** (Master System BIOS `bios.sms` optional for a few unlicensed titles)
 
+## Prerequisites
+
+### Firmware / BIOS
+
+- **BIOS** — Sega Master System boot ROM. Optional; a handful of unlicensed titles check for it.
+
+| File | For | Required? |
+|---|---|---|
+| `bios.sms` (US/EU) / `bios_J.sms` (JP) | SMS unlicensed / region check | Optional |
+
+### System requirements
+
+**Desktop (Windows / macOS / Linux)**
+- Any hardware. 2 GB RAM.
+
+**Android**
+- ✅ **S24 Ultra / Z Fold 5 / Tab S9 Ultra** — trivial.
+
+**iOS / iPadOS**
+- ✅ **iPad Pro 12.9" M1** — trivial.
+
+**Handhelds (SteamOS / Windows handhelds)**
+- ✅ **Steam Deck** — trivial.
+- ✅ **Legion Go** — trivial.
+
 ## Recommended emulators
 
 | Emulator | Type | Notes |
