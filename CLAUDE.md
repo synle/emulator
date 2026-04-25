@@ -34,6 +34,9 @@ Prefer JSDoc over free-form comments for anything a caller needs to understand. 
 - `systems/` — per-system docs (one file per console). Each covers install on Android, iOS, macOS, Windows, and Linux (Ubuntu), plus how the system maps onto the three frontends.
 - `README.md` — index plus the aggregate support matrix and per-device compatibility grid.
 - `clean.js` — Node.js ROM filename cleaner (zero deps, uses `fs`/`path` only). Strips GoodTools/No-Intro junk (`[!]`, `[a1]`, `(Hack)`, `(Beta)`, etc.) while preserving region/language/version/disc tags. Run with `node clean.js <rom-folder> [<rom-folder>...] [--dry-run]`. Tested via `npm test`.
+- `pack.js` — ROM library packer + deduper. Two sub-commands:
+  - `node pack.js zip <folder> [--dry-run]` — flattens nested folders into the top level, then archives each universal-zip-eligible cartridge ROM (`UNIVERSAL_ZIP_EXTENSIONS` — see "systems with universal `.zip` support" above) into `<name>.zip`. Disc-based formats (`.iso`, `.chd`, `.cue`, etc.) are intentionally not touched. On collision: identical content (MD5 match) → source dropped; different content → new zip written with a `<name> - <timestamp>.zip` suffix.
+  - `node pack.js dedup <folder> [--dry-run]` — walks the folder, groups files by MD5+size, moves the older copies of each duplicate set into `<folder>/_recycleBin` (newest kept). Mirrors the bash `dedup` function in `~/git/bashrc/software/scripts/bash-file-utils.profile.bash`.
 
 ## When adding a new system doc
 
