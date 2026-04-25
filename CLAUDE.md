@@ -47,6 +47,18 @@ Prefer JSDoc over free-form comments for anything a caller needs to understand. 
 4. If the system has unique setup steps, also add a row to the per-system tables in `apps/retroarch.md`, `apps/emudeck.md`, and `apps/retrodeck.md`.
 5. Run `npm test` and `npm run format` before committing (the pre-commit hook will refuse the commit otherwise).
 
+## Reference: systems with universal `.zip` support
+
+When writing about ROM file formats, these systems accept `.zip` files as direct input across **every common emulator** and **every major OS** (Windows, macOS, Linux, Android, iOS) without configuration:
+
+**8/16-bit cartridge:** NES, SNES, GB/GBC, GBA, Genesis/Mega Drive, Master System, Game Gear, 32X, PC Engine HuCard, Atari 2600.
+
+**Arcade (zip is canonical, not just supported):** Arcade (MAME / FBNeo), Neo Geo AES / MVS.
+
+Everything else either needs the system's native compressed format (`.chd`, `.rvz`, `.nsz`, `.cso`, `.vpk`) or has mixed support — notably N64 standalones (simple64, Ares) often want raw `.z64`, and NDS forks vary on `.nds.zip`. All disc-based systems (PS1/PS2/Saturn/Dreamcast/Sega CD/PCE CD/Neo Geo CD/PSP) need `.chd` or `.cue`+`.bin`.
+
+Rule of thumb: if the original media was a **cartridge** or **single-chip arcade board**, `.zip` is fine. If it was a **disc** or **modern encrypted package**, use the native format.
+
 ## Writing style
 
 - Short, dense, reference-grade. Prefer tables over prose for lookup content.
