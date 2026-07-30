@@ -217,9 +217,7 @@ function _processWork(rootDir) {
     const newPath = path.join(dir, newName);
 
     if (fs.existsSync(newPath)) {
-      console.warn(
-        `⚠️  Collision: target exists, skipping: "${newPath}" (would overwrite)`,
-      );
+      console.warn(`⚠️  Collision: target exists, skipping: "${newPath}" (would overwrite)`);
       skipped++;
       continue;
     }
@@ -234,9 +232,7 @@ function _processWork(rootDir) {
       console.log(`✅ Renamed: "${oldName}" -> "${newName}"`);
       renamed++;
     } catch (err) {
-      console.error(
-        `❌ Failed to rename "${oldPath}" -> "${newPath}": ${err.message}`,
-      );
+      console.error(`❌ Failed to rename "${oldPath}" -> "${newPath}": ${err.message}`);
     }
   }
 

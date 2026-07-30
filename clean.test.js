@@ -4,12 +4,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 
-const {
-  cleanRomName,
-  parseDryRun,
-  parsePaths,
-  _processWork,
-} = require("./clean.js");
+const { cleanRomName, parseDryRun, parsePaths, _processWork } = require("./clean.js");
 
 // ---------------------------------------------------------------------------
 // cleanRomName — pure string transform. Locks in current behavior so the
@@ -19,17 +14,11 @@ const {
 // --- Square-bracket dump-quality tags ([!], [a1], [b], [T+Eng], etc.) ---
 
 test("strips [!] verified-good-dump tag", () => {
-  assert.equal(
-    cleanRomName("Super Mario World (USA) [!].smc"),
-    "Super Mario World (USA).smc",
-  );
+  assert.equal(cleanRomName("Super Mario World (USA) [!].smc"), "Super Mario World (USA).smc");
 });
 
 test("strips [a1] alternate-dump tag", () => {
-  assert.equal(
-    cleanRomName("Sonic the Hedgehog (W) [a1].md"),
-    "Sonic the Hedgehog (W).md",
-  );
+  assert.equal(cleanRomName("Sonic the Hedgehog (W) [a1].md"), "Sonic the Hedgehog (W).md");
 });
 
 test("strips [b1] bad-dump tag", () => {
@@ -64,10 +53,7 @@ test("strips [T-Eng] in-progress translation tag", () => {
 });
 
 test("strips multiple consecutive bracket tags", () => {
-  assert.equal(
-    cleanRomName("Pokemon Red (U) [S][!].gbc"),
-    "Pokemon Red (U).gbc",
-  );
+  assert.equal(cleanRomName("Pokemon Red (U) [S][!].gbc"), "Pokemon Red (U).gbc");
 });
 
 // --- Parenthesized junk tags (Hack, Beta, Proto, etc.) ---
@@ -121,10 +107,7 @@ test("strips (Bootleg) tag", () => {
 });
 
 test("strips (Aftermarket) tag", () => {
-  assert.equal(
-    cleanRomName("Modern Game (Aftermarket).nes"),
-    "Modern Game.nes",
-  );
+  assert.equal(cleanRomName("Modern Game (Aftermarket).nes"), "Modern Game.nes");
 });
 
 test("strips (Alt) variant tag", () => {
@@ -144,47 +127,29 @@ test("strips multiple junk parens at once", () => {
 test("preserves (Hackathon) — word-boundary keeps non-flag tokens intact", () => {
   // "(Hackathon)" begins with "Hack" but isn't the flag — \b after "Hack"
   // requires a non-word char, which "a" is not, so the regex doesn't match.
-  assert.equal(
-    cleanRomName("Hackathon Special (USA).nes"),
-    "Hackathon Special (USA).nes",
-  );
+  assert.equal(cleanRomName("Hackathon Special (USA).nes"), "Hackathon Special (USA).nes");
 });
 
 // --- Region / language / version / disc tags must be preserved ---
 
 test("preserves (USA) region tag", () => {
-  assert.equal(
-    cleanRomName("Super Mario Bros (USA).nes"),
-    "Super Mario Bros (USA).nes",
-  );
+  assert.equal(cleanRomName("Super Mario Bros (USA).nes"), "Super Mario Bros (USA).nes");
 });
 
 test("preserves (Japan) region tag", () => {
-  assert.equal(
-    cleanRomName("Super Mario Bros (Japan).nes"),
-    "Super Mario Bros (Japan).nes",
-  );
+  assert.equal(cleanRomName("Super Mario Bros (Japan).nes"), "Super Mario Bros (Japan).nes");
 });
 
 test("preserves (Europe) region tag", () => {
-  assert.equal(
-    cleanRomName("Super Mario Bros (Europe).nes"),
-    "Super Mario Bros (Europe).nes",
-  );
+  assert.equal(cleanRomName("Super Mario Bros (Europe).nes"), "Super Mario Bros (Europe).nes");
 });
 
 test("preserves (World) region tag", () => {
-  assert.equal(
-    cleanRomName("Super Mario Bros (World).nes"),
-    "Super Mario Bros (World).nes",
-  );
+  assert.equal(cleanRomName("Super Mario Bros (World).nes"), "Super Mario Bros (World).nes");
 });
 
 test("preserves multi-region (USA, Europe)", () => {
-  assert.equal(
-    cleanRomName("Mega Man X (USA, Europe).smc"),
-    "Mega Man X (USA, Europe).smc",
-  );
+  assert.equal(cleanRomName("Mega Man X (USA, Europe).smc"), "Mega Man X (USA, Europe).smc");
 });
 
 test("preserves single-letter region codes like (U), (J), (E), (W)", () => {
@@ -207,17 +172,11 @@ test("preserves language list (En,Fr,De,Es,It)", () => {
 });
 
 test("preserves (Rev 1) revision tag", () => {
-  assert.equal(
-    cleanRomName("Zelda (USA) (Rev 1).sfc"),
-    "Zelda (USA) (Rev 1).sfc",
-  );
+  assert.equal(cleanRomName("Zelda (USA) (Rev 1).sfc"), "Zelda (USA) (Rev 1).sfc");
 });
 
 test("preserves (Rev A) revision tag", () => {
-  assert.equal(
-    cleanRomName("Game (USA) (Rev A).sfc"),
-    "Game (USA) (Rev A).sfc",
-  );
+  assert.equal(cleanRomName("Game (USA) (Rev A).sfc"), "Game (USA) (Rev A).sfc");
 });
 
 test("preserves (V1.0) version tag", () => {
@@ -232,10 +191,7 @@ test("preserves (Disc 1) for multi-disc ROMs", () => {
 });
 
 test("preserves (Disc 2 of 3) extended disc-info form", () => {
-  assert.equal(
-    cleanRomName("Game (USA) (Disc 2 of 3).bin"),
-    "Game (USA) (Disc 2 of 3).bin",
-  );
+  assert.equal(cleanRomName("Game (USA) (Disc 2 of 3).bin"), "Game (USA) (Disc 2 of 3).bin");
 });
 
 // --- Whitespace / underscore handling ---
@@ -255,10 +211,7 @@ test("preserves file extension verbatim", () => {
 });
 
 test("handles files with no extension", () => {
-  assert.equal(
-    cleanRomName("Super Mario World (USA) [!]"),
-    "Super Mario World (USA)",
-  );
+  assert.equal(cleanRomName("Super Mario World (USA) [!]"), "Super Mario World (USA)");
 });
 
 // --- Real-world combinations ---
@@ -289,10 +242,7 @@ test("real-world: hacked DS rom", () => {
 });
 
 test("real-world: underscore-style filename with mixed junk", () => {
-  assert.equal(
-    cleanRomName("Sonic_the_Hedgehog_(W)_[a1][!].md"),
-    "Sonic the Hedgehog (W).md",
-  );
+  assert.equal(cleanRomName("Sonic_the_Hedgehog_(W)_[a1][!].md"), "Sonic the Hedgehog (W).md");
 });
 
 // ---------------------------------------------------------------------------
@@ -306,10 +256,7 @@ test("parseDryRun: defaults false", () => {
 });
 
 test("parseDryRun: --dry-run flag enables", () => {
-  assert.equal(
-    parseDryRun({ argv: [...baseArgv, "--dry-run"], env: {} }),
-    true,
-  );
+  assert.equal(parseDryRun({ argv: [...baseArgv, "--dry-run"], env: {} }), true);
 });
 
 test("parseDryRun: DRY_RUN=1 env enables", () => {

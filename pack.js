@@ -46,10 +46,7 @@ const RECYCLE_BIN_NAME = "_recycleBin";
  * @returns {string} 32-char hex MD5.
  */
 function md5OfFile(filePath) {
-  return crypto
-    .createHash("md5")
-    .update(fs.readFileSync(filePath))
-    .digest("hex");
+  return crypto.createHash("md5").update(fs.readFileSync(filePath)).digest("hex");
 }
 
 /**
@@ -235,10 +232,7 @@ function zipFile(srcPath, zipPath) {
  * @param {{dryRun?: boolean, now?: () => Date}} [opts]
  * @returns {{zipped: number, alreadyZipped: number, conflicts: number}}
  */
-function zipUniversalRoms(
-  rootPath,
-  { dryRun = false, now = () => new Date() } = {},
-) {
+function zipUniversalRoms(rootPath, { dryRun = false, now = () => new Date() } = {}) {
   let zipped = 0;
   let alreadyZipped = 0;
   let conflicts = 0;
@@ -249,9 +243,7 @@ function zipUniversalRoms(
     .readdirSync(rootPath, { withFileTypes: true })
     .filter((d) => d.isFile())
     .map((d) => path.join(rootPath, d.name))
-    .filter((f) =>
-      UNIVERSAL_ZIP_EXTENSIONS.includes(path.extname(f).toLowerCase()),
-    );
+    .filter((f) => UNIVERSAL_ZIP_EXTENSIONS.includes(path.extname(f).toLowerCase()));
 
   for (const src of top) {
     const ext = path.extname(src);
@@ -267,9 +259,7 @@ function zipUniversalRoms(
           console.log(`💧 [DRY RUN] would remove duplicate source: ${src}`);
         } else {
           fs.unlinkSync(src);
-          console.log(
-            `✓ Already archived; removed source: ${path.basename(src)}`,
-          );
+          console.log(`✓ Already archived; removed source: ${path.basename(src)}`);
         }
         alreadyZipped++;
         continue;
@@ -290,13 +280,9 @@ function zipUniversalRoms(
       zipFile(src, actualTarget);
       fs.unlinkSync(src);
       zipped++;
-      console.log(
-        `✅ Zipped: "${path.basename(src)}" -> "${path.basename(actualTarget)}"`,
-      );
+      console.log(`✅ Zipped: "${path.basename(src)}" -> "${path.basename(actualTarget)}"`);
     } catch (err) {
-      console.error(
-        `❌ Failed to zip "${src}" -> "${actualTarget}": ${err.message}`,
-      );
+      console.error(`❌ Failed to zip "${src}" -> "${actualTarget}": ${err.message}`);
     }
   }
 
@@ -315,10 +301,7 @@ function zipUniversalRoms(
  *     when false, dedup is performed per-directory.
  * @returns {{scanned: number, dupSets: number, moved: number, freed: number}}
  */
-function dedupFolder(
-  rootPath,
-  { recursive = true, acrossFolders = true, dryRun = false } = {},
-) {
+function dedupFolder(rootPath, { recursive = true, acrossFolders = true, dryRun = false } = {}) {
   const files = recursive
     ? listAllFiles(rootPath)
     : fs
@@ -363,9 +346,7 @@ function dedupFolder(
       for (let i = 1; i < dupes.length; i++) {
         const dup = dupes[i];
         if (dryRun) {
-          console.log(
-            `💧 [DRY RUN] would move duplicate to recycle bin: ${dup.path}`,
-          );
+          console.log(`💧 [DRY RUN] would move duplicate to recycle bin: ${dup.path}`);
           moved++;
           freed += dup.size;
           continue;
@@ -374,9 +355,7 @@ function dedupFolder(
           moveToRecycleBin(dup.path, rootPath);
           moved++;
           freed += dup.size;
-          console.log(
-            `🗑️  Duplicate moved to recycle bin: ${path.relative(rootPath, dup.path)}`,
-          );
+          console.log(`🗑️  Duplicate moved to recycle bin: ${path.relative(rootPath, dup.path)}`);
         } catch (err) {
           console.error(`❌ Failed to recycle ${dup.path}: ${err.message}`);
         }

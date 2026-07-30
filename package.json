@@ -1,15 +1,15 @@
 {
   "name": "emulator-docs",
   "version": "1.0.0",
-  "description": "Emulator setup guides for RetroArch, EmuDeck, and RetroDeck across Android, iOS, macOS, Windows, and Linux",
   "private": true,
+  "description": "Emulator setup guides for RetroArch, EmuDeck, and RetroDeck across Android, iOS, macOS, Windows, and Linux",
   "scripts": {
     "test": "node --test",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "prepare": "git config --local core.hooksPath .githooks || true"
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "oxfmt": "^0.61.0"
   }
 }

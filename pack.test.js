@@ -132,9 +132,7 @@ test("flattenFolder: identical-content collision moves the nested copy to _recyc
 
     // Top-level original kept; nested copy moved into recycle bin.
     assert.ok(fs.existsSync(path.join(root, "rom.nes")));
-    assert.ok(
-      fs.existsSync(path.join(root, RECYCLE_BIN_NAME, "sub", "rom.nes")),
-    );
+    assert.ok(fs.existsSync(path.join(root, RECYCLE_BIN_NAME, "sub", "rom.nes")));
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -158,10 +156,7 @@ test("flattenFolder: different-content collision renames the nested copy with ti
     assert.deepEqual(top, ["rom - 2024_01_05_09_07_03.nes", "rom.nes"]);
 
     // Original top file content unchanged.
-    assert.equal(
-      fs.readFileSync(path.join(root, "rom.nes"), "utf8"),
-      "version A",
-    );
+    assert.equal(fs.readFileSync(path.join(root, "rom.nes"), "utf8"), "version A");
     assert.equal(
       fs.readFileSync(path.join(root, "rom - 2024_01_05_09_07_03.nes"), "utf8"),
       "version B",
@@ -229,13 +224,8 @@ test("zipUniversalRoms: target zip already contains identical content -> source 
 
     silenced(() => zipUniversalRoms(root));
 
-    assert.ok(
-      !fs.existsSync(nes),
-      "source should be removed (already archived)",
-    );
-    const filesAfter = fs
-      .readdirSync(root)
-      .filter((f) => f !== RECYCLE_BIN_NAME);
+    assert.ok(!fs.existsSync(nes), "source should be removed (already archived)");
+    const filesAfter = fs.readdirSync(root).filter((f) => f !== RECYCLE_BIN_NAME);
     assert.deepEqual(filesAfter, ["Game.zip"]);
     // Existing zip not re-written.
     assert.equal(fs.statSync(path.join(root, "Game.zip")).mtimeMs, beforeMtime);
@@ -392,9 +382,7 @@ test("dedupFolder: per-folder mode does NOT cross subfolder boundaries", () => {
     fs.writeFileSync(path.join(subA, "rom.nes"), "same");
     fs.writeFileSync(path.join(subB, "rom.nes"), "same");
 
-    silenced(() =>
-      dedupFolder(root, { recursive: true, acrossFolders: false }),
-    );
+    silenced(() => dedupFolder(root, { recursive: true, acrossFolders: false }));
 
     // Both kept since they live in different folders.
     assert.ok(fs.existsSync(path.join(subA, "rom.nes")));
@@ -412,8 +400,7 @@ test("dedupFolder: dry-run reports counts without moving anything", () => {
     fs.writeFileSync(path.join(root, "b.bin"), "same");
 
     const r =
-      silenced(() => dedupFolder(root, { dryRun: true })) ??
-      dedupFolder(root, { dryRun: true });
+      silenced(() => dedupFolder(root, { dryRun: true })) ?? dedupFolder(root, { dryRun: true });
     void r;
 
     // Both files still on disk.
@@ -431,14 +418,8 @@ test("dedupFolder: dry-run reports counts without moving anything", () => {
 
 test("parseDryRun: false by default; --dry-run flag enables it", () => {
   assert.equal(parseDryRun({ argv: ["node", "pack.js"], env: {} }), false);
-  assert.equal(
-    parseDryRun({ argv: ["node", "pack.js", "--dry-run"], env: {} }),
-    true,
-  );
-  assert.equal(
-    parseDryRun({ argv: ["node", "pack.js"], env: { DRY_RUN: "1" } }),
-    true,
-  );
+  assert.equal(parseDryRun({ argv: ["node", "pack.js", "--dry-run"], env: {} }), true);
+  assert.equal(parseDryRun({ argv: ["node", "pack.js"], env: { DRY_RUN: "1" } }), true);
 });
 
 test("parsePaths: extracts positional args after the sub-command, ignores --flags", () => {
